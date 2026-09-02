@@ -1,1 +1,96 @@
-Contact
+<% content_for :title, "Contact" %>
+
+<section class="contact-page">
+  <div class="container-md">
+    <h1 class="contact-page__title">Contact</h1>
+    <p class="contact-page__intro">
+      Wilt u meer weten over wat ik voor u kan betekenen of een <strong>offerte</strong> aanvragen?
+      Vul dan onderstaand formulier zo volledig mogelijk in.<br>
+      De met een * gemarkeerde velden zijn verplicht. Ik neem na bevestiging z.s.m. contact met u op.
+    </p>
+
+    <% if notice.present? %>
+      <p class="contact-page__notice"><%= notice %></p>
+    <% end %>
+
+    <div class="contact-page__layout">
+      <%= form_with model: @contact_inquiry, url: contact_path, method: :post, class: "contact-form" do |form| %>
+        <% if @contact_inquiry.errors.any? %>
+          <div class="contact-form__errors">
+            <p>Controleer de gemarkeerde velden.</p>
+            <ul>
+              <% @contact_inquiry.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="contact-form__field">
+          <%= form.label :company_name, "Bedrijfsnaam *" %>
+          <%= form.text_field :company_name, class: field_class(@contact_inquiry, :company_name) %>
+        </div>
+
+        <div class="contact-form__field">
+          <%= form.label :name, "Naam *" %>
+          <%= form.text_field :name, class: field_class(@contact_inquiry, :name) %>
+        </div>
+
+        <div class="contact-form__field">
+          <%= form.label :address, "Adres" %>
+          <%= form.text_field :address, class: "form-control" %>
+        </div>
+
+        <div class="contact-form__field">
+          <%= form.label :postal_code, "Postcode" %>
+          <%= form.text_field :postal_code, class: "form-control" %>
+        </div>
+
+        <div class="contact-form__field">
+          <%= form.label :city, "Woonplaats" %>
+          <%= form.text_field :city, class: "form-control" %>
+        </div>
+
+        <div class="contact-form__field">
+          <%= form.label :phone, "Telefoon" %>
+          <%= form.telephone_field :phone, class: "form-control" %>
+        </div>
+
+        <div class="contact-form__field">
+          <%= form.label :email, "Uw email *" %>
+          <%= form.email_field :email, class: field_class(@contact_inquiry, :email) %>
+        </div>
+
+        <div class="contact-form__field">
+          <%= form.label :interest, "Interesse *" %>
+          <%= form.select :interest,
+                ContactInquiry::INTERESTS.map { |value, label| [ label, value ] },
+                { include_blank: "Maak een keuze" },
+                class: field_class(@contact_inquiry, :interest, base: "form-select") %>
+        </div>
+
+        <div class="contact-form__field">
+          <%= form.label :message, "Uw bericht" %>
+          <%= form.text_area :message, rows: 8, class: "form-control" %>
+        </div>
+
+        <%= form.submit "Verzenden", class: "btn btn-primary btn-lg" %>
+      <% end %>
+
+      <aside class="contact-page__aside">
+        <h2 class="contact-page__aside-title">Contact</h2>
+        <p>
+          Schottershuizen 21<br>
+          7921 TJ<br>
+          <%= link_to "06-27263145", "tel:+31627263145" %>
+        </p>
+
+        <h2 class="contact-page__aside-title">Vragen?</h2>
+        <p>
+          Neem gerust contact op:<br>
+          <%= mail_to "info@eggenbouwmanagement.nl" %>
+        </p>
+      </aside>
+    </div>
+  </div>
+</section>

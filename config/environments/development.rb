@@ -40,6 +40,11 @@ Rails.application.configure do
   # Set localhost to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
+  unless ENV["RESEND_API_KEY"].present? || ENV["SMTP_ADDRESS"].present?
+    config.action_mailer.delivery_method = :file
+    config.action_mailer.file_settings = { location: Rails.root.join("tmp/mail") }
+  end
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

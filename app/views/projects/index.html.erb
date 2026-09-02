@@ -1,1 +1,44 @@
-Projects Index
+<% content_for :title, "Projecten" %>
+
+<section class="projects-page" data-controller="project-filter">
+  <div class="container-md">
+    <h1 class="projects-page__title">Projecten</h1>
+
+    <div class="project-filters" role="group" aria-label="Filter projecten">
+      <button
+        type="button"
+        class="project-filters__btn is-active"
+        data-project-filter-target="button"
+        data-action="project-filter#filter"
+        data-category=""
+        aria-pressed="true"
+      >
+        Alles
+      </button>
+      <% @categories.each do |key, label| %>
+        <button
+          type="button"
+          class="project-filters__btn"
+          data-project-filter-target="button"
+          data-action="project-filter#filter"
+          data-category="<%= key %>"
+          aria-pressed="false"
+        >
+          <%= label %>
+        </button>
+      <% end %>
+    </div>
+
+    <div class="project-gallery">
+      <% @photos.each do |photo| %>
+        <figure
+          class="project-gallery__item"
+          data-project-filter-target="item"
+          data-category="<%= photo[:category] %>"
+        >
+          <%= image_tag photo[:image], alt: photo[:alt] %>
+        </figure>
+      <% end %>
+    </div>
+  </div>
+</section>

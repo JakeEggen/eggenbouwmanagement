@@ -1,0 +1,24 @@
+nl:
+  activerecord:
+    attributes:
+      contact_inquiry:
+        company_name: Bedrijfsnaam
+        name: Naam
+        address: Adres
+        postal_code: Postcode
+        city: Woonplaats
+        phone: Telefoon
+        email: E-mail
+        message: Bericht
+        interest: Interesse
+    errors:
+      messages:
+        blank: is verplicht
+        invalid: is ongeldig
+        inclusion: is geen geldige keuze
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: is verplicht
+      invalid: is ongeldig
+      inclusion: is geen geldige keuze

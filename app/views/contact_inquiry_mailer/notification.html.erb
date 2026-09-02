@@ -1,0 +1,17 @@
+<p>Er is een nieuw contactformulier binnengekomen.</p>
+
+<p>
+  <strong>Interesse:</strong> <%= @inquiry.interest_label %><br>
+  <strong>Bedrijfsnaam:</strong> <%= @inquiry.company_name %><br>
+  <strong>Naam:</strong> <%= @inquiry.name %><br>
+  <strong>Adres:</strong> <%= @inquiry.address %><br>
+  <strong>Postcode:</strong> <%= @inquiry.postal_code %><br>
+  <strong>Woonplaats:</strong> <%= @inquiry.city %><br>
+  <strong>Telefoon:</strong> <%= @inquiry.phone %><br>
+  <strong>E-mail:</strong> <%= mail_to @inquiry.email %>
+</p>
+
+<p>
+  <strong>Bericht:</strong><br>
+  <%= simple_format(@inquiry.message) %>
+</p>

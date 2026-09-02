@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   get "lots/kavel_c", to: "lots#kavel_c"
 
   get "contact", to: "contact#contact"
+  post "contact", to: "contact#create"
 end
