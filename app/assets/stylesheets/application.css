@@ -644,3 +644,247 @@ body {
   }
 }
 
+.lot-page {
+  padding: 1.5rem 0 4rem;
+  background: #fff;
+}
+
+.lot-page__crumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--eggen-gray);
+}
+
+.lot-page__crumb a {
+  color: var(--eggen-blue);
+  text-decoration: none;
+}
+
+.lot-page__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 17.5rem;
+  gap: 2rem;
+  align-items: start;
+}
+
+.lot-gallery__main {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: var(--eggen-light);
+}
+
+.lot-gallery__thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.lot-gallery__thumb {
+  padding: 0;
+  border: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+}
+
+.lot-gallery__thumb.is-active {
+  border-color: var(--eggen-blue);
+}
+
+.lot-gallery__thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.lot-page__header {
+  margin: 1.5rem 0 0;
+}
+
+.lot-page__kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--eggen-blue);
+}
+
+.lot-page__title {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.6vw, 2.6rem);
+  font-weight: 600;
+  color: var(--eggen-dark);
+}
+
+.lot-page__city {
+  margin: 0.2rem 0 0.75rem;
+  color: var(--eggen-gray);
+}
+
+.lot-page__price {
+  margin: 0 0 1rem;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--eggen-dark);
+}
+
+.lot-page__price span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--eggen-gray);
+}
+
+.lot-page__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--eggen-dark);
+}
+
+.lot-section {
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid #e4eaed;
+}
+
+.lot-section h2 {
+  margin: 0 0 1rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--eggen-dark);
+}
+
+.lot-section h3 {
+  margin: 1.25rem 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--eggen-gray);
+}
+
+.lot-section p {
+  margin: 0 0 0.9rem;
+  line-height: 1.7;
+  color: var(--eggen-gray);
+}
+
+.lot-specs {
+  display: grid;
+  margin: 0;
+}
+
+.lot-specs div {
+  display: grid;
+  grid-template-columns: minmax(9rem, 14rem) minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid #eef2f4;
+}
+
+.lot-specs dt {
+  margin: 0;
+  color: var(--eggen-gray);
+}
+
+.lot-specs dd {
+  margin: 0;
+  color: var(--eggen-dark);
+}
+
+.lot-map {
+  overflow: hidden;
+  background: var(--eggen-light);
+}
+
+.lot-map iframe {
+  display: block;
+  width: 100%;
+  height: 280px;
+  border: 0;
+}
+
+.lot-map__caption {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+}
+
+.lot-map__caption a {
+  color: var(--eggen-blue);
+}
+
+.lot-popularity {
+  background: var(--eggen-light);
+  padding: 1.25rem 1.35rem;
+  border-top: none;
+}
+
+.lot-popularity h2 {
+  margin-bottom: 0.4rem;
+}
+
+.lot-popularity p {
+  margin: 0;
+}
+
+.lot-cta {
+  position: sticky;
+  top: 5.5rem;
+  padding: 1.35rem;
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--eggen-blue) 22%, white);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--eggen-blue) 10%, transparent);
+}
+
+.lot-cta__price {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--eggen-dark);
+}
+
+.lot-cta__meta {
+  margin: 0.25rem 0 1rem;
+  font-size: 0.92rem;
+  color: var(--eggen-gray);
+}
+
+.lot-cta .btn {
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
+
+.lot-cta__note {
+  margin: 0.85rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--eggen-gray);
+}
+
+@media (max-width: 767.98px) {
+  .lot-page {
+    padding: 1rem 0 3rem;
+  }
+
+  .lot-page__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .lot-cta {
+    position: static;
+  }
+
+  .lot-specs div {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+}
+

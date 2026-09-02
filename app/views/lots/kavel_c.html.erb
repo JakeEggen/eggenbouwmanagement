@@ -1,0 +1,160 @@
+<% content_for :title, "Kavel C · Europaweg, Coevorden" %>
+
+<article class="lot-page">
+  <div class="container-md">
+    <nav class="lot-page__crumb" aria-label="Kruimelpad">
+      <%= link_to "Home", root_path %>
+      <span>/</span>
+      <%= link_to "Kavels", lots_path %>
+      <span>/</span>
+      <span>Kavel C</span>
+    </nav>
+
+    <div class="lot-page__layout">
+      <div>
+        <div class="lot-gallery" data-controller="lot-gallery">
+          <%= image_tag "home_3_lots.webp",
+                alt: "Bouwkavel C aan de Europaweg in Coevorden",
+                class: "lot-gallery__main",
+                data: { lot_gallery_target: "main" } %>
+          <div class="lot-gallery__thumbs">
+            <button
+              type="button"
+              class="lot-gallery__thumb is-active"
+              data-lot-gallery-target="thumb"
+              data-action="lot-gallery#show"
+              data-src="<%= asset_path("home_3_lots.webp") %>"
+              data-alt="Bouwkavel C aan de Europaweg in Coevorden"
+            >
+              <%= image_tag "home_3_lots.webp", alt: "" %>
+            </button>
+            <button
+              type="button"
+              class="lot-gallery__thumb"
+              data-lot-gallery-target="thumb"
+              data-action="lot-gallery#show"
+              data-src="<%= asset_path("landbouwgrond.webp") %>"
+              data-alt="Omgeving van de kavel"
+            >
+              <%= image_tag "landbouwgrond.webp", alt: "" %>
+            </button>
+            <button
+              type="button"
+              class="lot-gallery__thumb"
+              data-lot-gallery-target="thumb"
+              data-action="lot-gallery#show"
+              data-src="<%= asset_path("slide-1.jpg") %>"
+              data-alt="Ligging in het buitengebied"
+            >
+              <%= image_tag "slide-1.jpg", alt: "" %>
+            </button>
+          </div>
+        </div>
+
+        <header class="lot-page__header">
+          <p class="lot-page__kicker">Bouwgrond · Beschikbaar</p>
+          <h1 class="lot-page__title">Europaweg C</h1>
+          <p class="lot-page__city">7742 PN Coevorden</p>
+          <p class="lot-page__price">€ 405.000 <span>k.k.</span></p>
+          <ul class="lot-page__facts">
+            <li><strong>6.667 m²</strong> perceel</li>
+            <li><strong>Bouwgrond</strong></li>
+            <li><strong>Wonen</strong></li>
+          </ul>
+        </header>
+
+        <section class="lot-section">
+          <h2>Kenmerken</h2>
+
+          <h3>Overdracht</h3>
+          <dl class="lot-specs">
+            <div>
+              <dt>Vraagprijs</dt>
+              <dd>€ 405.000 kosten koper</dd>
+            </div>
+            <div>
+              <dt>Status</dt>
+              <dd>Beschikbaar</dd>
+            </div>
+            <div>
+              <dt>Aanvaarding</dt>
+              <dd>In overleg</dd>
+            </div>
+          </dl>
+
+          <h3>Bouw</h3>
+          <dl class="lot-specs">
+            <div>
+              <dt>Soort object</dt>
+              <dd>Bouwgrond</dd>
+            </div>
+            <div>
+              <dt>Bestemming</dt>
+              <dd>Wonen</dd>
+            </div>
+            <div>
+              <dt>Bestemmingsplan</dt>
+              <dd>Europaweg 8 te Coevorden (Ruimte voor ruimte)</dd>
+            </div>
+            <div>
+              <dt>Energielabel</dt>
+              <dd>Niet van toepassing</dd>
+            </div>
+          </dl>
+
+          <h3>Oppervlakte</h3>
+          <dl class="lot-specs">
+            <div>
+              <dt>Perceeloppervlakte</dt>
+              <dd>6.667 m²</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="lot-section">
+          <h2>Omschrijving</h2>
+          <p>
+            Aan de rand van Coevorden, bij de wijk Klinkenvlier en de Klinkenvlierse plas,
+            ligt kavel C in een landelijke omgeving. Rust en ruimte, met de voorzieningen
+            van Coevorden op korte afstand.
+          </p>
+          <p>
+            Deze bouwkavel is één van drie percelen die worden ontwikkeld onder de
+            Ruimte-voor-ruimte-regeling. Als eigenaar heeft u veel vrijheid om zelf een
+            woning te bouwen of te laten bouwen. De drie kavels zijn ongeveer:
+            kavel A 8.188 m², kavel B 7.126 m² en kavel C 6.667 m².
+          </p>
+          <p>
+            Een of meer kavels kunnen worden uitgebreid met extra grond (kavel O) en
+            eventueel met aangrenzende agrarische grond van het naastgelegen perceel.
+          </p>
+          <p>
+            De bouwregels staan in het bestemmingsplan Europaweg 8 te Coevorden
+            (Ruimte voor ruimte). De bestemming is Wonen. Aanvaarding in overleg.
+          </p>
+        </section>
+
+        <section class="lot-section">
+          <h2>Kaart</h2>
+          <div class="lot-map">
+            <iframe
+              title="Kaart Europaweg, Coevorden"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=6.73%2C52.645%2C6.79%2C52.675&amp;layer=mapnik&amp;marker=52.661%2C6.760"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <p class="lot-map__caption">
+            <%= link_to "Grotere kaart", "https://www.openstreetmap.org/?mlat=52.661&mlon=6.760#map=14/52.661/6.760", target: "_blank", rel: "noreferrer" %>
+          </p>
+        </section>
+      </div>
+
+      <aside class="lot-cta">
+        <p class="lot-cta__price">€ 405.000 k.k.</p>
+        <p class="lot-cta__meta">Kavel C · 6.667 m² · Coevorden</p>
+        <%= link_to "Neem contact op", contact_path(interesse: "kavel_c"), class: "btn btn-primary btn-lg w-100" %>
+        <p class="lot-cta__note">Vragen over deze kavel? We horen graag van u.</p>
+      </aside>
+    </div>
+  </div>
+</article>
