@@ -8,3 +8,73 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.navbar-top {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.navbar-brand {
+  min-width: 0;
+  margin-right: 0.75rem;
+}
+
+.navbar-brand img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-height: 40px;
+  max-width: 100%;
+}
+
+.navbar-toggler {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  padding: 0.25rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.hamburger__icon {
+  display: block;
+  width: 34px;
+  height: 4px;
+  margin: 4px 0;
+  border-radius: 1px;
+  background-color: #444446;
+  transition: 0.5s;
+}
+
+.navbar-toggler[aria-expanded="true"] .icon1 {
+  transform: translateY(11px) rotate(-45deg);
+}
+
+.navbar-toggler[aria-expanded="true"] .icon2 {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+.navbar-toggler[aria-expanded="true"] .icon3 {
+  transform: translateY(-13px) rotate(45deg);
+}
+
+@media (max-width: 767.98px) {
+  .navbar-top {
+    width: 100%;
+  }
+
+  .navbar-brand {
+    flex: 1 1 0%;
+  }
+
+  .navbar .nav-link {
+    padding: 10px 0;
+  }
+}
+

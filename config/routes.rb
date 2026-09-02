@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   root "home#index"
+
+  get "projects", to: "projects#index"
+  get "lots", to: "lots#index"
+  get "contact", to: "home#contact"
 end
