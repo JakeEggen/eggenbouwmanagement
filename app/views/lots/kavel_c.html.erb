@@ -12,44 +12,7 @@
 
     <div class="lot-page__layout">
       <div>
-        <div class="lot-gallery" data-controller="lot-gallery">
-          <%= image_tag "home_3_lots.webp",
-                alt: "Bouwkavel C aan de Europaweg in Coevorden",
-                class: "lot-gallery__main",
-                data: { lot_gallery_target: "main" } %>
-          <div class="lot-gallery__thumbs">
-            <button
-              type="button"
-              class="lot-gallery__thumb is-active"
-              data-lot-gallery-target="thumb"
-              data-action="lot-gallery#show"
-              data-src="<%= asset_path("home_3_lots.webp") %>"
-              data-alt="Bouwkavel C aan de Europaweg in Coevorden"
-            >
-              <%= image_tag "home_3_lots.webp", alt: "" %>
-            </button>
-            <button
-              type="button"
-              class="lot-gallery__thumb"
-              data-lot-gallery-target="thumb"
-              data-action="lot-gallery#show"
-              data-src="<%= asset_path("landbouwgrond.webp") %>"
-              data-alt="Omgeving van de kavel"
-            >
-              <%= image_tag "landbouwgrond.webp", alt: "" %>
-            </button>
-            <button
-              type="button"
-              class="lot-gallery__thumb"
-              data-lot-gallery-target="thumb"
-              data-action="lot-gallery#show"
-              data-src="<%= asset_path("slide-1.jpg") %>"
-              data-alt="Ligging in het buitengebied"
-            >
-              <%= image_tag "slide-1.jpg", alt: "" %>
-            </button>
-          </div>
-        </div>
+        <%= render "lots/gallery", main_alt: "Bouwkavel C aan de Europaweg in Coevorden" %>
 
         <header class="lot-page__header">
           <p class="lot-page__kicker">Bouwgrond · Beschikbaar</p>

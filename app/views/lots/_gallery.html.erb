@@ -1,0 +1,113 @@
+<%
+  photos = [
+    { file: "home_3_lots.webp", alt: local_assigns.fetch(:main_alt) },
+    { file: "landbouwgrond.webp", alt: "Omgeving van de kavel" },
+    { file: "slide-1.jpg", alt: "Ligging in het buitengebied" }
+  ]
+%>
+
+<div class="lot-gallery" data-controller="lot-gallery">
+  <button
+    type="button"
+    class="lot-gallery__hero"
+    data-action="lot-gallery#open"
+    aria-label="Foto groter bekijken"
+  >
+    <%= image_tag photos.first[:file],
+          alt: photos.first[:alt],
+          class: "lot-gallery__main",
+          data: { lot_gallery_target: "main" } %>
+    <span class="lot-gallery__count" data-lot-gallery-target="hint">1 / <%= photos.size %></span>
+  </button>
+
+  <div class="lot-gallery__thumbs">
+    <% photos.each_with_index do |photo, index| %>
+      <button
+        type="button"
+        class="lot-gallery__thumb<%= " is-active" if index.zero? %>"
+        data-lot-gallery-target="thumb"
+        data-action="lot-gallery#openAt"
+        data-src="<%= asset_path(photo[:file]) %>"
+        data-alt="<%= photo[:alt] %>"
+        aria-label="<%= photo[:alt] %>"
+      >
+        <%= image_tag photo[:file], alt: "" %>
+      </button>
+    <% end %>
+  </div>
+
+  <div
+    class="lot-lightbox"
+    data-lot-gallery-target="lightbox"
+    data-action="click->lot-gallery#closeOnBackdrop"
+    hidden
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lot-lightbox-title"
+  >
+    <div class="lot-lightbox__top">
+      <p id="lot-lightbox-title" class="lot-lightbox__counter">
+        <span data-lot-gallery-target="counter">1 / <%= photos.size %></span>
+      </p>
+      <button
+        type="button"
+        class="lot-lightbox__close"
+        data-action="lot-gallery#close"
+        data-lot-gallery-target="close"
+        aria-label="Sluiten"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M6 6l12 12M18 6 6 18" />
+        </svg>
+      </button>
+    </div>
+
+    <div
+      class="lot-lightbox__stage"
+      data-action="touchstart->lot-gallery#touchStart touchend->lot-gallery#touchEnd"
+    >
+      <button
+        type="button"
+        class="lot-lightbox__nav lot-lightbox__nav--prev"
+        data-action="lot-gallery#prev"
+        aria-label="Vorige foto"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7" />
+        </svg>
+      </button>
+
+      <img
+        class="lot-lightbox__image"
+        data-lot-gallery-target="lightboxImage"
+        src="<%= asset_path(photos.first[:file]) %>"
+        alt="<%= photos.first[:alt] %>"
+      >
+
+      <button
+        type="button"
+        class="lot-lightbox__nav lot-lightbox__nav--next"
+        data-action="lot-gallery#next"
+        aria-label="Volgende foto"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="lot-lightbox__thumbs">
+      <% photos.each_with_index do |photo, index| %>
+        <button
+          type="button"
+          class="lot-lightbox__thumb<%= " is-active" if index.zero? %>"
+          data-lot-gallery-target="lightboxThumb"
+          data-action="lot-gallery#selectFromLightbox"
+          aria-label="<%= photo[:alt] %>"
+        >
+          <%= image_tag photo[:file], alt: "" %>
+        </button>
+      <% end %>
+    </div>
+  </div>
+</div>
