@@ -1,0 +1,36 @@
+<footer class="site-footer">
+  <div class="container-md site-footer__inner">
+    <div class="site-footer__grid">
+      <div>
+        <h2 class="site-footer__title">Contact</h2>
+        <p class="site-footer__text">
+          Schottershuizen 21<br>
+          7921 TJ<br>
+          <%= link_to "06-27263145", "tel:+31627263145", class: "site-footer__link" %>
+        </p>
+      </div>
+
+      <nav aria-label="Footer">
+        <h2 class="site-footer__title">Pagina's</h2>
+        <ul class="site-footer__links">
+          <li><%= link_to "Home", root_path, class: "site-footer__link" %></li>
+          <li><%= link_to "Projecten", projects_path, class: "site-footer__link" %></li>
+          <li><%= link_to "Kavels", lots_path, class: "site-footer__link" %></li>
+          <li><%= link_to "Contact", contact_path, class: "site-footer__link" %></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h2 class="site-footer__title">Vragen?</h2>
+        <p class="site-footer__text">Neem gerust contact op:</p>
+        <%= mail_to "info@eggenbouwmanagement.nl", "info@eggenbouwmanagement.nl", class: "site-footer__link" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-footer__bar">
+    <div class="container-md">
+      Eggen Bouw Management © <%= Date.current.year %>
+    </div>
+  </div>
+</footer>

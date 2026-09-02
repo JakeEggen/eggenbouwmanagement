@@ -1,9 +1,79 @@
-<div class="container py-5">
-  <div class="text-center">
-    <h1 class="display-4 fw-bold">EggenBouwManagement</h1>
-
-    <p class="lead text-body-secondary">
-      Dit is een test van Rails + Render.
+<section class="home-block home-intro">
+  <div class="home-intro__media">
+    <%= image_tag "slide-1.jpg", alt: "Grondverzet op een bouwproject" %>
+  </div>
+  <div class="home-intro__copy">
+    <p class="home-intro__label">Eggen Bouwmanagement</p>
+    <h1 class="home-intro__title">Van plan tot oplevering</h1>
+    <p class="home-intro__text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere nisl at tincidunt blandit, nisi nisl aliquet sapien, vitae luctus velit elit in erat. Suspendisse potenti. Curabitur sit amet lorem sed lacus auctor tristique.
     </p>
   </div>
-</div>
+</section>
+
+<section class="home-block home-block--alt home-projects">
+  <div class="container-md">
+    <h2 class="home-projects__title">Projecten</h2>
+    <p class="home-projects__text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere nisl at tincidunt blandit, vitae luctus velit elit in erat.
+    </p>
+
+    <div class="home-projects__grid">
+      <%= image_tag "vechtdal_ommen.webp", alt: "Project Vechtdal Ommen" %>
+      <%= image_tag "SAM_2323.jpg", alt: "Bouwproject" %>
+    </div>
+
+    <%= link_to "Bekijk projecten", projects_path, class: "btn btn-primary btn-lg" %>
+  </div>
+</section>
+
+<section class="home-block home-lots">
+  <div class="container-md">
+    <h2 class="home-lots__title">Kavels</h2>
+    <p class="home-lots__text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere nisl at tincidunt blandit, nisi nisl aliquet sapien, vitae luctus velit elit in erat. Suspendisse potenti. Curabitur sit amet lorem sed lacus auctor tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
+    </p>
+    <p class="home-lots__location">
+      Locatie: Coevorden, Binnenvree Buitenvree Pikveld, Europaweg
+    </p>
+
+    <div class="home-lots__row">
+      <div class="home-lots__media">
+        <%= image_tag "home_3_lots.webp", alt: "Kavels Binnenvree Buitenvree Pikveld in Coevorden" %>
+      </div>
+      <div class="home-lots__actions">
+        <%= link_to "Kavel A", lots_kavel_a_path, class: "btn btn-primary btn-lg" %>
+        <%= link_to "Kavel B", lots_kavel_b_path, class: "btn btn-primary btn-lg" %>
+        <%= link_to "Kavel C", lots_kavel_c_path, class: "btn btn-primary btn-lg" %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="home-block home-block--alt home-land">
+  <div class="container-md">
+    <h2 class="home-land__title">Landbouwgrond</h2>
+
+    <div class="home-land__row">
+      <div class="home-land__box">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Integer posuere nisl at tincidunt blandit.</p>
+        <p>Nisi nisl aliquet sapien, vitae luctus velit elit in erat.</p>
+        <p>Suspendisse potenti. Curabitur sit amet lorem.</p>
+        <br />
+        <p>Sed lacus auctor tristique vestibulum ante ipsum.</p>
+        <p>Primis in faucibus orci luctus et ultrices posuere.</p>
+        <p>Cubilia curae donec vel mauris commodo.</p>
+        <p>Aenean vitae nisl at arcu tincidunt fermentum.</p>
+      </div>
+      <div class="home-land__media">
+        <%= image_tag "landbouwgrond.webp", alt: "Landbouwgrond" %>
+      </div>
+    </div>
+
+    <div class="home-land__cta">
+      <button type="button" class="btn btn-primary btn-lg">Interesse</button>
+    </div>
+  </div>
+</section>
+

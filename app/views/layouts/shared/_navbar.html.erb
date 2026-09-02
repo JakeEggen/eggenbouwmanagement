@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom" data-controller="mobile-nav">
+<nav class="navbar navbar-expand-md navbar-light bg-white sticky-top" data-controller="mobile-nav">
   <div class="container-md">
     <div class="navbar-top">
       <%= link_to root_path, class: "navbar-brand" do %>
@@ -23,14 +23,14 @@
 
     <div class="collapse navbar-collapse" id="mainNavbar" data-mobile-nav-target="menu">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <%= link_to "Projecten", projects_path, class: "nav-link fs-5 fw-medium", data: { action: "mobile-nav#close" } %>
+        <li class="nav-item mx-lg-2 mx-0">
+          <%= link_to "Projecten", projects_path, class: "nav-link fs-3 fw-light", data: { action: "mobile-nav#close" } %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Kavels", lots_path, class: "nav-link fs-5 fw-medium", data: { action: "mobile-nav#close" } %>
+        <li class="nav-item mx-lg-2 mx-0">
+          <%= link_to "Kavels", lots_path, class: "nav-link fs-3 fw-light", data: { action: "mobile-nav#close" } %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Contact", contact_path, class: "nav-link fs-5 fw-medium", data: { action: "mobile-nav#close" } %>
+        <li class="nav-item mx-lg-2 mx-0">
+          <%= link_to "Contact", contact_path, class: "nav-link fs-3 fw-light", data: { action: "mobile-nav#close" } %>
         </li>
       </ul>
     </div>

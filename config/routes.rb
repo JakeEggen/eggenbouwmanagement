@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   root "home#index"
 
   get "projects", to: "projects#index"
+  
   get "lots", to: "lots#index"
-  get "contact", to: "home#contact"
+  get "lots/kavel_a", to: "lots#kavel_a"
+  get "lots/kavel_b", to: "lots#kavel_b"
+  get "lots/kavel_c", to: "lots#kavel_c"
+
+  get "contact", to: "contact#contact"
 end
