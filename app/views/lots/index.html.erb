@@ -1,1 +1,48 @@
-Lots Index
+<% content_for :title, "Kavels" %>
+
+<section class="lots-index">
+  <div class="container-md">
+    <h1 class="lots-index__title">Kavels</h1>
+    <p class="lots-index__intro">
+      Aan de Europaweg in Coevorden liggen drie bouwkavels onder de
+      Ruimte-voor-ruimte-regeling. Bestemming Wonen, zelf bouwen naar eigen wens.
+    </p>
+    <p class="lots-index__location">
+      Locatie: Coevorden, Binnenvree Buitenvree Pikveld, Europaweg
+    </p>
+
+    <%= image_tag "home_3_lots.webp", alt: "Bouwkavels Europaweg Coevorden", class: "lots-index__hero" %>
+
+    <div class="lots-index__grid">
+      <% @lots.each do |lot| %>
+        <article class="lot-card">
+          <%= link_to lot[:path], class: "lot-card__image" do %>
+            <%= image_tag "home_3_lots.webp", alt: lot[:name] %>
+          <% end %>
+          <div class="lot-card__body">
+            <p class="lot-card__kicker">Bouwgrond · Beschikbaar</p>
+            <h2 class="lot-card__title"><%= lot[:name] %></h2>
+            <p class="lot-card__address"><%= lot[:address] %>, 7742 PN Coevorden</p>
+            <p class="lot-card__meta"><%= lot[:size] %> perceel</p>
+            <p class="lot-card__price"><%= lot[:price] %></p>
+            <%= link_to "Bekijk kavel", lot[:path], class: "btn btn-primary" %>
+          </div>
+        </article>
+      <% end %>
+    </div>
+
+    <section class="lots-index__map">
+      <h2>Kaart</h2>
+      <div class="lot-map">
+        <iframe
+          title="Kaart Europaweg, Coevorden"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=6.73%2C52.645%2C6.79%2C52.675&amp;layer=mapnik&amp;marker=52.661%2C6.760"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p class="lot-map__caption">
+        <%= link_to "Grotere kaart", "https://www.openstreetmap.org/?mlat=52.661&mlon=6.760#map=14/52.661/6.760", target: "_blank", rel: "noreferrer" %>
+      </p>
+    </section>
+  </div>
+</section>
