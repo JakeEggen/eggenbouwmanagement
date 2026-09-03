@@ -24,4 +24,6 @@ Rails.application.routes.draw do
 
   get "contact", to: "contact#contact"
   post "contact", to: "contact#create"
+
+  get "privacyverklaring", to: "pages#privacy", as: :privacy
 end

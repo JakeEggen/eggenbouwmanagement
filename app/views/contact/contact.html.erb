@@ -75,6 +75,11 @@
           <%= form.text_area :message, rows: 8, class: "form-control" %>
         </div>
 
+        <p class="contact-form__privacy">
+          Uw gegevens gebruiken wij alleen om contact met u op te nemen.
+          Zie onze <%= link_to "privacyverklaring", privacy_path %>.
+        </p>
+
         <%= form.submit "Verzenden", class: "btn btn-primary btn-lg" %>
       <% end %>
 

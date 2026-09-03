@@ -6,6 +6,7 @@ class ContactControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "h1", "Contact"
     assert_select "form"
+    assert_select "a[href=?]", privacy_path
   end
 
   test "preselects interest from query param" do
