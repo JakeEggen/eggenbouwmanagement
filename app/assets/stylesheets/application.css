@@ -1207,7 +1207,7 @@ body.lot-lightbox-open {
 .lot-card {
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: #e4eaed;
   border: 1px solid #e4eaed;
 }
 
