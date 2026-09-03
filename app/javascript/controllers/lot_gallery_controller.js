@@ -1,15 +1,23 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "main", "thumb", "lightbox", "lightboxImage", "lightboxThumb", "counter", "close", "hint" ]
+  static targets = [ "main", "thumb", "lightbox", "lightboxImage", "lightboxThumb", "counter", "close", "hint", "thumbs", "thumbsViewport", "shiftPrev", "shiftNext" ]
 
   connect() {
     this.index = 0
+    this.windowStart = 0
     this.boundKeydown = this.keydown.bind(this)
     this.resetZoom(false)
+    requestAnimationFrame(() => this.applyThumbShift())
+
+    if (this.hasThumbsViewportTarget) {
+      this.resizeObserver = new ResizeObserver(() => this.applyThumbShift())
+      this.resizeObserver.observe(this.thumbsViewportTarget)
+    }
   }
 
   disconnect() {
+    this.resizeObserver?.disconnect()
     this.close()
   }
 
@@ -74,6 +82,34 @@ export default class extends Controller {
   next(event) {
     event?.stopPropagation()
     this.select(this.index + 1)
+  }
+
+  shiftPrev(event) {
+    event?.preventDefault()
+    const maxStart = Math.max(this.pageThumbs.length - this.visibleThumbs, 0)
+    this.windowStart = this.windowStart <= 0 ? maxStart : this.windowStart - 1
+    this.applyThumbShift()
+  }
+
+  shiftNext(event) {
+    event?.preventDefault()
+    const maxStart = Math.max(this.pageThumbs.length - this.visibleThumbs, 0)
+    this.windowStart = this.windowStart >= maxStart ? 0 : this.windowStart + 1
+    this.applyThumbShift()
+  }
+
+  thumbsTouchStart(event) {
+    this.thumbsTouchX = event.changedTouches[0].screenX
+  }
+
+  thumbsTouchEnd(event) {
+    if (this.thumbsTouchX === undefined) return
+
+    const dx = event.changedTouches[0].screenX - this.thumbsTouchX
+    this.thumbsTouchX = undefined
+    if (Math.abs(dx) < 40) return
+
+    dx < 0 ? this.shiftNext() : this.shiftPrev()
   }
 
   touchStart(event) {
@@ -176,6 +212,8 @@ export default class extends Controller {
       thumb.classList.toggle("is-active", i === this.index)
     })
 
+    this.ensureThumbWindow()
+    this.applyThumbShift()
     this.resetZoom(false)
   }
 
@@ -217,5 +255,46 @@ export default class extends Controller {
       src: thumb.dataset.src,
       alt: thumb.dataset.alt
     }))
+  }
+
+  get pageThumbs() {
+    return this.thumbTargets.filter((thumb) => thumb.classList.contains("lot-gallery__thumb"))
+  }
+
+  get visibleThumbs() {
+    return 3
+  }
+
+  ensureThumbWindow() {
+    const count = this.pageThumbs.length
+    const visible = this.visibleThumbs
+    if (count <= visible) {
+      this.windowStart = 0
+      return
+    }
+
+    if (this.index < this.windowStart) this.windowStart = this.index
+    if (this.index >= this.windowStart + visible) this.windowStart = this.index - visible + 1
+    this.windowStart = Math.max(0, Math.min(this.windowStart, count - visible))
+  }
+
+  applyThumbShift() {
+    if (!this.hasThumbsTarget || !this.hasThumbsViewportTarget) return
+
+    const thumbs = this.pageThumbs
+    const visible = this.visibleThumbs
+    const maxStart = Math.max(thumbs.length - visible, 0)
+    this.windowStart = Math.max(0, Math.min(this.windowStart || 0, maxStart))
+
+    const first = thumbs[0]
+    if (!first) return
+
+    const gap = Number.parseFloat(getComputedStyle(this.thumbsTarget).gap) || 0
+    const step = first.getBoundingClientRect().width + gap
+    this.thumbsTarget.style.transform = `translateX(${-this.windowStart * step}px)`
+
+    const showShift = thumbs.length > visible
+    if (this.hasShiftPrevTarget) this.shiftPrevTarget.hidden = !showShift
+    if (this.hasShiftNextTarget) this.shiftNextTarget.hidden = !showShift
   }
 }

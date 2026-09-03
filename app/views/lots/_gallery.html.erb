@@ -15,20 +15,52 @@
     <span class="lot-gallery__count" data-lot-gallery-target="hint">1 / <%= photos.size %></span>
   </button>
 
-  <div class="lot-gallery__thumbs">
-    <% photos.each_with_index do |photo, index| %>
-      <button
-        type="button"
-        class="lot-gallery__thumb<%= " is-active" if index.zero? %>"
-        data-lot-gallery-target="thumb"
-        data-action="lot-gallery#openAt"
-        data-src="<%= asset_path(photo[:file]) %>"
-        data-alt="<%= photo[:alt] %>"
-        aria-label="<%= photo[:alt] %>"
-      >
-        <%= image_tag photo[:file], alt: "" %>
-      </button>
-    <% end %>
+  <div class="lot-gallery__thumbs-row<%= " is-static" if photos.size <= 3 %>">
+    <button
+      type="button"
+      class="lot-gallery__shift lot-gallery__shift--prev"
+      data-action="lot-gallery#shiftPrev"
+      data-lot-gallery-target="shiftPrev"
+      aria-label="Vorige foto's"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7" />
+      </svg>
+    </button>
+
+    <div
+      class="lot-gallery__thumbs-viewport"
+      data-lot-gallery-target="thumbsViewport"
+      data-action="touchstart->lot-gallery#thumbsTouchStart touchend->lot-gallery#thumbsTouchEnd"
+    >
+      <div class="lot-gallery__thumbs" data-lot-gallery-target="thumbs">
+        <% photos.each_with_index do |photo, index| %>
+          <button
+            type="button"
+            class="lot-gallery__thumb<%= " is-active" if index.zero? %>"
+            data-lot-gallery-target="thumb"
+            data-action="lot-gallery#show"
+            data-src="<%= asset_path(photo[:file]) %>"
+            data-alt="<%= photo[:alt] %>"
+            aria-label="<%= photo[:alt] %>"
+          >
+            <%= image_tag photo[:file], alt: "" %>
+          </button>
+        <% end %>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="lot-gallery__shift lot-gallery__shift--next"
+      data-action="lot-gallery#shiftNext"
+      data-lot-gallery-target="shiftNext"
+      aria-label="Volgende foto's"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
+      </svg>
+    </button>
   </div>
 
   <div
