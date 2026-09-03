@@ -80,8 +80,10 @@
       <img
         class="lot-lightbox__image"
         data-lot-gallery-target="lightboxImage"
+        data-action="dblclick->lot-gallery#toggleZoom pointerdown->lot-gallery#pointerDown pointermove->lot-gallery#pointerMove pointerup->lot-gallery#pointerUp pointercancel->lot-gallery#pointerUp"
         src="<%= asset_path(photos.first[:file]) %>"
         alt="<%= photos.first[:alt] %>"
+        draggable="false"
       >
 
       <button

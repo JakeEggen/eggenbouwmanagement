@@ -1,6 +1,6 @@
 <% content_for :title, "Projecten" %>
 
-<section class="projects-page" data-controller="project-filter">
+<section class="projects-page" data-controller="project-filter lot-gallery">
   <div class="container-md">
     <h1 class="projects-page__title">Projecten</h1>
 
@@ -31,14 +31,99 @@
 
     <div class="project-gallery">
       <% @photos.each do |photo| %>
-        <figure
+        <button
+          type="button"
           class="project-gallery__item"
           data-project-filter-target="item"
+          data-lot-gallery-target="thumb"
+          data-action="lot-gallery#openAt"
+          data-src="<%= asset_path(photo[:image]) %>"
+          data-alt="<%= photo[:alt] %>"
           data-category="<%= photo[:category] %>"
+          aria-label="<%= photo[:alt] %> groter bekijken"
         >
           <%= image_tag photo[:image], alt: photo[:alt] %>
-        </figure>
+        </button>
       <% end %>
     </div>
   </div>
+
+  <% if @photos.any? %>
+  <div
+    class="lot-lightbox"
+    data-lot-gallery-target="lightbox"
+    data-action="click->lot-gallery#closeOnBackdrop"
+    hidden
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="project-lightbox-title"
+  >
+    <div class="lot-lightbox__top">
+      <p id="project-lightbox-title" class="lot-lightbox__counter">
+        <span data-lot-gallery-target="counter">1 / <%= @photos.size %></span>
+      </p>
+      <button
+        type="button"
+        class="lot-lightbox__close"
+        data-action="lot-gallery#close"
+        data-lot-gallery-target="close"
+        aria-label="Sluiten"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M6 6l12 12M18 6 6 18" />
+        </svg>
+      </button>
+    </div>
+
+    <div
+      class="lot-lightbox__stage"
+      data-action="touchstart->lot-gallery#touchStart touchend->lot-gallery#touchEnd"
+    >
+      <button
+        type="button"
+        class="lot-lightbox__nav lot-lightbox__nav--prev"
+        data-action="lot-gallery#prev"
+        aria-label="Vorige foto"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7" />
+        </svg>
+      </button>
+
+      <img
+        class="lot-lightbox__image"
+        data-lot-gallery-target="lightboxImage"
+        data-action="dblclick->lot-gallery#toggleZoom pointerdown->lot-gallery#pointerDown pointermove->lot-gallery#pointerMove pointerup->lot-gallery#pointerUp pointercancel->lot-gallery#pointerUp"
+        src="<%= asset_path(@photos.first[:image]) %>"
+        alt="<%= @photos.first[:alt] %>"
+        draggable="false"
+      >
+
+      <button
+        type="button"
+        class="lot-lightbox__nav lot-lightbox__nav--next"
+        data-action="lot-gallery#next"
+        aria-label="Volgende foto"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="lot-lightbox__thumbs">
+      <% @photos.each_with_index do |photo, index| %>
+        <button
+          type="button"
+          class="lot-lightbox__thumb<%= " is-active" if index.zero? %>"
+          data-lot-gallery-target="lightboxThumb"
+          data-action="lot-gallery#selectFromLightbox"
+          aria-label="<%= photo[:alt] %>"
+        >
+          <%= image_tag photo[:image], alt: "" %>
+        </button>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
 </section>
