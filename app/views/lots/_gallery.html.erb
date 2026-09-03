@@ -1,11 +1,6 @@
-<%
-  photos = [
-    { file: "home_3_lots.webp", alt: local_assigns.fetch(:main_alt) },
-    { file: "landbouwgrond.webp", alt: "Omgeving van de kavel" },
-    { file: "slide-1.jpg", alt: "Ligging in het buitengebied" }
-  ]
-%>
+<% photos = local_assigns[:photos] || @photos || [] %>
 
+<% if photos.any? %>
 <div class="lot-gallery" data-controller="lot-gallery">
   <button
     type="button"
@@ -113,3 +108,4 @@
     </div>
   </div>
 </div>
+<% end %>
