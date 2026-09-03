@@ -1,17 +1,27 @@
 class ProjectsController < ApplicationController
   CATEGORIES = [
-    [ "onderhoud", "Onderhoud", "slide-1.jpg" ],
-    [ "scholen", "Scholen", "vechtdal_ommen.webp" ],
-    [ "verbouwingen", "Verbouwingen", "SAM_2323.jpg" ],
-    [ "verzorgingstehuizen", "Verzorgingstehuizen", "home_3_lots.webp" ]
+    [ "onderhoud", "Onderhoud" ],
+    [ "scholen", "Scholen" ],
+    [ "verbouwingen", "Verbouwingen" ],
+    [ "verzorgingstehuizen", "Verzorgingstehuizen" ]
   ].freeze
 
   def index
-    @categories = CATEGORIES.map { |key, label, _image| [ key, label ] }
-    @photos = CATEGORIES.flat_map do |key, label, image|
-      5.times.map do |index|
-        { image: image, category: key, alt: "#{label} #{index + 1}" }
-      end
+    @categories = CATEGORIES
+
+    @photos = project_images.each_with_index.map do |file, index|
+      key, label = CATEGORIES[index / 5] || CATEGORIES.last
+      { image: "projects/#{file}", category: key, alt: "#{label} #{file[/\A(\d+)/]}" }
     end
+  end
+
+  private
+
+  def project_images
+    image_dir = Rails.root.join("app/assets/images/projects")
+
+    Dir.children(image_dir)
+       .select { |file| file.match?(/\.(jpg|jpeg|png|webp)\z/i) }
+       .sort_by { |file| [ file[/\A(\d+)/].to_i, file ] }
   end
 end
