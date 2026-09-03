@@ -50,8 +50,8 @@ class LotsController < ApplicationController
   private
 
   def load_photos(folder)
-    kavel = KAVELS.find { |item| item[:folder] == folder }
-    @photos = photos_for(folder, kavel[:alt])
+    @kavel = KAVELS.find { |item| item[:folder] == folder }
+    @photos = photos_for(folder, @kavel[:alt])
   end
 
   def photos_for(folder, alt)

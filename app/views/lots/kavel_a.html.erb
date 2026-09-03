@@ -1,4 +1,6 @@
 <% content_for :title, "Kavel A · Europaweg, Coevorden" %>
+<% content_for :og_description, "#{@kavel[:alt]}. #{@kavel[:size]} perceel, #{@kavel[:price]}" %>
+<% content_for :og_image, @photos.first[:file] if @photos.first %>
 
 <article class="lot-page">
   <div class="container-md">
