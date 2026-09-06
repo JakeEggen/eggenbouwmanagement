@@ -115,9 +115,9 @@
   }
 }
 
-.home-block {
+/* .home-block {
   min-height: calc(100svh - 4.5rem);
-}
+} */
 
 .home-block--alt {
   background-color: var(--eggen-light);
@@ -267,7 +267,7 @@
 }
 
 .home-projects__text {
-  margin: 0 auto 2rem;
+  margin: 2rem;
   font-size: 1.05rem;
   line-height: 1.7;
   color: var(--eggen-gray);
@@ -326,7 +326,8 @@
 }
 
 .home-lots__text {
-  margin: 0 0 1.25rem;
+  margin: 2rem;
+  /* margin: 0 0 1.25rem; */
   /* max-width: 42rem; */
   font-size: 1.05rem;
   line-height: 1.7;
@@ -404,6 +405,9 @@
 }
 
 .home-land__box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: #fff;
   border: 1px solid color-mix(in srgb, var(--eggen-blue) 18%, white);
   border-left: 3px solid var(--eggen-blue);
@@ -411,8 +415,8 @@
 }
 
 .home-land__box p {
-  margin: 0 0 0.85rem;
-  font-size: 1.05rem;
+  margin: 0 0 1.85rem;
+  font-size: 1.15rem;
   line-height: 1.6;
   color: var(--eggen-gray);
 }
@@ -1312,6 +1316,49 @@ body.lot-lightbox-open {
   color: var(--eggen-dark);
 }
 
+.lots-index__land {
+  scroll-margin-top: 5.5rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid color-mix(in srgb, var(--eggen-blue) 18%, white);
+}
+
+.lots-index__land h2 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 600;
+  color: var(--eggen-dark);
+}
+
+.lots-index__land-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.lots-index__land-copy p {
+  margin: 0 0 1rem;
+  max-width: 42rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--eggen-gray);
+}
+
+.lots-index__land-copy .btn {
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+}
+
+.lots-index__land-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
 @media (max-width: 767.98px) {
   .lots-index {
     padding: 2rem 0 3rem;
@@ -1322,6 +1369,10 @@ body.lot-lightbox-open {
   }
 
   .lots-index__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lots-index__land-row {
     grid-template-columns: 1fr;
   }
 }

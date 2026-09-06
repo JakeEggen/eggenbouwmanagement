@@ -15,6 +15,8 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_select ".home-lots__text", /Europaweg/
     assert_select ".home-lots a[href=?]", lots_path
     assert_select "h2", "Landbouwgrond"
-    assert_select ".home-land__box", /agrarische perceel/
+    assert_select ".home-land__box", /landbouwgrond/
+    assert_select ".home-lots__text", /kavel O/
+    assert_select "a[href='/kavels#Landbouwgrond']"
   end
 end

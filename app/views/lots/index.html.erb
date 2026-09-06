@@ -1,5 +1,5 @@
 <% content_for :title, "Bouwkavels Europaweg, Coevorden" %>
-<% content_for :og_description, "Drie bouwkavels aan de Europaweg in Coevorden. Bestemming Wonen, Ruimte voor ruimte. Zelf een vrijstaande woning bouwen, optioneel met extra landbouwgrond." %>
+<% content_for :og_description, "Drie bouwkavels aan de Europaweg in Coevorden. Bestemming Wonen, Ruimte voor ruimte. Optioneel uit te breiden met extra bouwgrond (kavel O)." %>
 <% content_for :og_image, "home_3_lots.webp" %>
 
 <section class="lots-index">
@@ -30,9 +30,9 @@
 
       <h2>Extra grond</h2>
       <p>
-        Een of meer kavels kunnen worden vergroot met extra beschikbare grond (kavel O).
-        Het aangrenzende agrarische perceel is in overleg bij te nemen.
-        <%= link_to "Vraag naar de landbouwgrond", contact_path(interesse: "landbouwgrond") %>.
+        Een of meer kavels kunnen worden vergroot met extra bouwgrond (kavel O).
+        Los daarvan is een groter stuk landbouwgrond te koop;
+        <%= link_to "zie onderaan deze pagina", "#Landbouwgrond" %>.
       </p>
     </div>
 
@@ -59,6 +59,40 @@
         </article>
       <% end %>
     </div>
+
+    <section id="Landbouwgrond" class="lots-index__land">
+      <h2>Landbouwgrond</h2>
+      <div class="lots-index__land-row">
+        <div class="lots-index__land-copy">
+          <p>
+            Aan de Europaweg in Coevorden is een zelfstandig stuk landbouwgrond te koop,
+            naast de drie bouwkavels. Dit perceel is geen extra bouwkavel en hoort niet bij kavel O.
+          </p>
+          <p>
+            Kadastraal is het gemeente Coevorden, sectie H, nummer 834
+            (<%= link_to "CVD00 H 834", "https://kadastralekaart.com/kaart/perceel/CVD00/H/834", target: "_blank", rel: "noreferrer" %>).
+            De oppervlakte is 19.175 m², ongeveer 1,92 hectare.
+          </p>
+          <p>
+            De bestemming is Agrarisch met waarden. Het perceel is niet adresseerbaar:
+            er staat geen woning of bedrijfsgebouw op.
+          </p>
+          <p>
+            De grond ligt in hetzelfde gebied als de bouwkavels, aan de rand van Coevorden
+            bij Binnenvree Buitenvree Pikveld. Dat maakt het geschikt als agrarisch perceel
+            naast de woningbouw, niet als vierde bouwkavel.
+          </p>
+          <p>
+            Prijs en gebruik stemmen we af in overleg. Voor de actuele situatie en de overdracht
+            kunt u contact opnemen.
+          </p>
+          <%= link_to "Interesse", contact_path(interesse: "landbouwgrond"), class: "btn btn-primary btn-lg" %>
+        </div>
+        <div class="lots-index__land-media">
+          <%= image_tag "landbouwgrond.png", alt: "Landbouwgrond te koop aan de Europaweg in Coevorden, perceel CVD00 H 834" %>
+        </div>
+      </div>
+    </section>
 
     <section class="lots-index__map">
       <h2>Kaart</h2>
