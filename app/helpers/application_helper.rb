@@ -1,6 +1,6 @@
 module ApplicationHelper
   SITE_NAME = "Eggen Bouw Management"
-  SITE_DESCRIPTION = "Van plan tot oplevering. Bouwmanagement, kavels en projecten in Coevorden en omgeving."
+  SITE_DESCRIPTION = "Bouwmanagement, bouwbegeleiding en bouwadvies in Drenthe, Overijssel en Groningen. Eggen Bouw Management begeleidt nieuwbouw en verbouw van plan tot oplevering."
 
   def field_class(record, attribute, base: "form-control")
     [ base, ("is-invalid" if record.errors[attribute].any?) ].compact.join(" ")

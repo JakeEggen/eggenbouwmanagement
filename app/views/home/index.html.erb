@@ -1,17 +1,21 @@
-<% content_for :og_description, "Van plan tot oplevering. Bouwmanagement, kavels en projecten in Coevorden en omgeving." %>
+<% content_for :title, "Bouwmanagement in Drenthe, Overijssel en Groningen" %>
+<% content_for :og_description, "Bouwmanagement, bouwbegeleiding en bouwadvies in Drenthe, Overijssel en Groningen. Eggen Bouw Management begeleidt nieuwbouw en verbouw van plan tot oplevering." %>
 <% content_for :og_image, "slide-1.jpg" %>
 
 <section class="home-block home-intro">
   <div class="home-intro__media">
-    <%= image_tag "slide-1.jpg", alt: "Grondverzet op een bouwproject" %>
+    <%= image_tag "slide-1.jpg", alt: "Bouwbegeleiding op een bouwproject in Drenthe" %>
   </div>
   <div class="home-intro__copy">
     <div class="home-intro__accent">
       <div class="home-intro__box">
         <p class="home-intro__label">Eggen Bouwmanagement</p>
-        <h1 class="home-intro__title">Van plan tot oplevering</h1>
+        <h1 class="home-intro__title">Bouwmanagement van plan tot oplevering</h1>
         <p class="home-intro__text">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere nisl at tincidunt blandit, nisi nisl aliquet sapien, vitae luctus velit elit in erat. Suspendisse potenti. Curabitur sit amet lorem sed lacus auctor tristique.
+          Als zelfstandig bouwadviseur begeleid ik bouwprojecten van het eerste plan tot de oplevering.
+          Dat is bouwmanagement en bouwbegeleiding: overzicht, planning en één aanspreekpunt.
+          Ook voor bouwadvies en projectbegeleiding bij woningbouw, nieuwbouw of een verbouw.
+          Ik werk in onder andere Drenthe, Overijssel en Groningen.
         </p>
       </div>
     </div>
@@ -22,12 +26,20 @@
   <div class="container-md">
     <h2 class="home-projects__title text-center">Projecten</h2>
     <p class="home-projects__text text-center">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere nisl at tincidunt blandit, vitae luctus velit elit in erat.
+      Twee uitgelichte bouwprojecten. Bij het Vechtdal College in Ommen ging het om nieuwbouw en renovatie van de school, zodat daar ook vwo gegeven kon worden — terwijl de lessen doorgingen.
+      Bij RCF Renkum begeleidde ik de directievoering en het bouwtoezicht op het nieuwe multifunctionele centrum: zwembad, sporthal en een plek voor sport en cultuur.
+      Op de projectenpagina staan meer voorbeelden, van scholen tot verzorgingstehuizen.
     </p>
 
     <div class="home-projects__grid">
-      <%= image_tag "vechtdal_ommen.webp", alt: "Project Vechtdal Ommen" %>
-      <%= image_tag "SAM_2323.jpg", alt: "Bouwproject" %>
+      <figure>
+        <%= image_tag "vechtdal_ommen.webp", alt: "Nieuwbouw en renovatie Vechtdal College in Ommen" %>
+        <figcaption>Vechtdal College, Ommen</figcaption>
+      </figure>
+      <figure>
+        <%= image_tag "SAM_2323.jpg", alt: "Nieuwbouw multifunctioneel centrum RCF Renkum" %>
+        <figcaption>RCF Renkum</figcaption>
+      </figure>
     </div>
 
     <div class="home-projects__cta text-center">
@@ -40,7 +52,10 @@
   <div class="container-md">
     <h2 class="home-lots__title">Kavels</h2>
     <p class="home-lots__text">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere nisl at tincidunt blandit, nisi nisl aliquet sapien, vitae luctus velit elit in erat. Suspendisse potenti. Curabitur sit amet lorem sed lacus auctor tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.
+      Drie bouwkavels aan de Europaweg in Coevorden, landelijk gelegen en bestemd voor wonen.
+      U laat zelf een vrijstaande woning bouwen, binnen de kaders van bestemmingsplan Europaweg 8 (Ruimte voor ruimte).
+      De percelen zijn 8.188 m², 7.126 m² en 6.667 m².
+      <%= link_to "Meer over de kavels", lots_path %>.
     </p>
     <p class="home-lots__location">
       Locatie: Coevorden, Binnenvree Buitenvree Pikveld, Europaweg
@@ -65,18 +80,14 @@
 
     <div class="home-land__row">
       <div class="home-land__box">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <p>Integer posuere nisl at tincidunt blandit.</p>
-        <p>Nisi nisl aliquet sapien, vitae luctus velit elit in erat.</p>
-        <p>Suspendisse potenti. Curabitur sit amet lorem.</p>
-        <br />
-        <p>Sed lacus auctor tristique vestibulum ante ipsum.</p>
-        <p>Primis in faucibus orci luctus et ultrices posuere.</p>
-        <p>Cubilia curae donec vel mauris commodo.</p>
-        <p>Aenean vitae nisl at arcu tincidunt fermentum.</p>
+        <p>Naast de drie bouwkavels aan de Europaweg in Coevorden is extra grond beschikbaar.</p>
+        <p>Een of meer kavels kunt u vergroten met die extra grond.</p>
+        <p>Daarnaast is het aangrenzende agrarische perceel in overleg bij te kopen.</p>
+        <p>Handig als u meer ruimte wilt, bijvoorbeeld voor weide, erf of uitloop.</p>
+        <p>Aanvaarding en indeling stemmen we af op uw plan.</p>
       </div>
       <div class="home-land__media">
-        <%= image_tag "landbouwgrond.png", alt: "Landbouwgrond" %>
+        <%= image_tag "landbouwgrond.png", alt: "Landbouwgrond naast de bouwkavels aan de Europaweg in Coevorden" %>
       </div>
     </div>
 
