@@ -3,7 +3,7 @@
 # Resend:
 #   RESEND_API_KEY=re_xxxxxxxxx
 # From-address is set in config/application.rb.
-# The From-domain must be verified in Resend.
+# The From-domain (jeggen-dev.nl) must be verified in Resend.
 # Generic SMTP fallback:
 #   SMTP_ADDRESS, SMTP_PORT, SMTP_USERNAME, SMTP_PASSWORD
 
@@ -17,6 +17,7 @@ if ENV["RESEND_API_KEY"].present?
     password: ENV["RESEND_API_KEY"],
     tls: true
   }
+  Rails.logger.info("[mailer] Resend SMTP enabled") if defined?(Rails.logger)
 elsif ENV["SMTP_ADDRESS"].present?
   Rails.application.config.action_mailer.delivery_method = :smtp
   Rails.application.config.action_mailer.raise_delivery_errors = true

@@ -19,7 +19,7 @@ module EggenBouwManagement
     config.i18n.default_locale = :nl
 
     config.action_mailer.default_options = {
-      from: "Eggen Bouw Management <noreply@eggenbouwmanagement.nl>"
+      from: "Eggen Bouw Management <noreply@jeggen-dev.nl>"
     }
 
     # Configuration for the application, engines, and railties goes here.
