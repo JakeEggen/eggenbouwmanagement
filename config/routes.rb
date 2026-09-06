@@ -15,12 +15,17 @@ Rails.application.routes.draw do
 
   root "home#index"
 
-  get "projects", to: "projects#index"
+  get "projecten", to: "projects#index", as: :projects
+  get "projects", to: redirect("/projecten")
 
-  get "lots", to: "lots#index"
-  get "lots/kavel_a", to: "lots#kavel_a"
-  get "lots/kavel_b", to: "lots#kavel_b"
-  get "lots/kavel_c", to: "lots#kavel_c"
+  get "kavels", to: "lots#index", as: :lots
+  get "kavels/bouwgrond-europaweg-a", to: "lots#kavel_a", as: :lots_kavel_a
+  get "kavels/bouwgrond-europaweg-b", to: "lots#kavel_b", as: :lots_kavel_b
+  get "kavels/bouwgrond-europaweg-c", to: "lots#kavel_c", as: :lots_kavel_c
+  get "lots", to: redirect("/kavels")
+  get "lots/kavel_a", to: redirect("/kavels/bouwgrond-europaweg-a")
+  get "lots/kavel_b", to: redirect("/kavels/bouwgrond-europaweg-b")
+  get "lots/kavel_c", to: redirect("/kavels/bouwgrond-europaweg-c")
 
   get "contact", to: "contact#contact"
   post "contact", to: "contact#create"

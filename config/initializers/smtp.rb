@@ -2,11 +2,8 @@
 #
 # Resend:
 #   RESEND_API_KEY=re_xxxxxxxxx
-#   MAILER_FROM=Eggen Bouw Management <noreply@eggenbouwmanagement.nl>
-#
-# The From-domain must be verified in Resend. Until then you can test with
-#   MAILER_FROM=Eggen Bouw Management <onboarding@resend.dev>
-#
+# From-address is set in config/application.rb.
+# The From-domain must be verified in Resend.
 # Generic SMTP fallback:
 #   SMTP_ADDRESS, SMTP_PORT, SMTP_USERNAME, SMTP_PASSWORD
 
