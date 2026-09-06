@@ -13,7 +13,8 @@
   --eggen-blue-dark: #00749F;
   --eggen-dark: #20282D;
   --eggen-gray: #5F6B73;
-  --eggen-light: #F5F7F8;
+  /* --eggen-light: #F5F7F8; */
+  --eggen-light: #e9ebec;
 }
 
 .btn-primary {
