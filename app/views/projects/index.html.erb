@@ -32,7 +32,7 @@
     </div>
 
     <div class="project-gallery">
-      <% @photos.each do |photo| %>
+      <% @photos.each_with_index do |photo, index| %>
         <button
           type="button"
           class="project-gallery__item"
@@ -44,7 +44,7 @@
           data-category="<%= photo[:category] %>"
           aria-label="<%= photo[:alt] %> groter bekijken"
         >
-          <%= image_tag photo[:image], alt: photo[:alt] %>
+          <%= image_tag photo[:thumb], alt: photo[:alt], loading: (index < 4 ? "eager" : "lazy"), decoding: "async" %>
         </button>
       <% end %>
     </div>
@@ -122,7 +122,7 @@
           data-action="lot-gallery#selectFromLightbox"
           aria-label="<%= photo[:alt] %>"
         >
-          <%= image_tag photo[:image], alt: "" %>
+          <%= image_tag photo[:thumb], alt: "", loading: "lazy", decoding: "async" %>
         </button>
       <% end %>
     </div>

@@ -44,7 +44,7 @@
             data-alt="<%= photo[:alt] %>"
             aria-label="<%= photo[:alt] %>"
           >
-            <%= image_tag photo[:file], alt: "" %>
+            <%= image_tag photo[:thumb], alt: "", loading: (index.zero? ? "eager" : "lazy"), decoding: "async" %>
           </button>
         <% end %>
       </div>
@@ -134,7 +134,7 @@
           data-action="lot-gallery#selectFromLightbox"
           aria-label="<%= photo[:alt] %>"
         >
-          <%= image_tag photo[:file], alt: "" %>
+          <%= image_tag photo[:thumb], alt: "", loading: "lazy", decoding: "async" %>
         </button>
       <% end %>
     </div>

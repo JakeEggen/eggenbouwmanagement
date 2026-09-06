@@ -8,6 +8,9 @@ class LotsControllerTest < ActionDispatch::IntegrationTest
     assert_select "meta[property='og:title'][content=?]", "Kavel A · Europaweg, Coevorden"
     assert_select "meta[property='og:image'][content*='kavel_a']"
     assert_select "meta[property='og:image'][content*='main']"
+    assert_select ".lot-gallery__thumb img[src*='/thumbs/']"
+    assert_select ".lot-lightbox__thumb img[src*='/thumbs/']"
+    assert_select ".lot-gallery__main[src*='main']"
   end
 
   test "kavels index has original location and plan copy" do

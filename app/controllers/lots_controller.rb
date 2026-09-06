@@ -30,7 +30,7 @@ class LotsController < ApplicationController
     @lots = KAVELS.map do |kavel|
       kavel.merge(
         path: public_send("lots_#{kavel[:folder]}_path"),
-        image: main_photo(kavel[:folder])
+        image: variant_path(kavel[:folder], image_files(kavel[:folder]).first, "thumbs")
       )
     end
   end
@@ -56,13 +56,12 @@ class LotsController < ApplicationController
 
   def photos_for(folder, alt)
     image_files(folder).map.with_index(1) do |file, index|
-      { file: "#{folder}/#{file}", alt: index == 1 ? alt : "#{alt} #{index}" }
+      {
+        file: "#{folder}/#{file}",
+        thumb: variant_path(folder, file, "thumbs"),
+        alt: index == 1 ? alt : "#{alt} #{index}"
+      }
     end
-  end
-
-  def main_photo(folder)
-    file = image_files(folder).first
-    file && "#{folder}/#{file}"
   end
 
   def image_files(folder)
@@ -74,5 +73,13 @@ class LotsController < ApplicationController
     rest = files.reject { |name| name.match?(/main/i) }
                 .sort_by { |name| [ name[/\A(\d+)/].to_i, name ] }
     mains.sort + rest
+  end
+
+  def variant_path(folder, file, variant)
+    return unless file
+
+    name = "#{File.basename(file, '.*')}.jpg"
+    path = Rails.root.join("app/assets/images", folder, variant, name)
+    path.file? ? "#{folder}/#{variant}/#{name}" : "#{folder}/#{file}"
   end
 end

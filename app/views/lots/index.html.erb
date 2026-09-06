@@ -46,7 +46,7 @@
       <% @lots.each do |lot| %>
         <article class="lot-card">
           <%= link_to lot[:path], class: "lot-card__image" do %>
-            <%= image_tag lot[:image], alt: lot[:name] %>
+            <%= image_tag lot[:image], alt: lot[:name], loading: "lazy", decoding: "async" %>
           <% end %>
           <div class="lot-card__body">
             <p class="lot-card__kicker">Bouwgrond · Beschikbaar</p>
