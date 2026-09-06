@@ -27,6 +27,11 @@
           </div>
         <% end %>
 
+        <div class="contact-form__hp" aria-hidden="true">
+          <%= form.label :website, "Website" %>
+          <%= form.text_field :website, tabindex: -1, autocomplete: "off" %>
+        </div>
+
         <div class="contact-form__field">
           <%= form.label :company_name, "Bedrijfsnaam *" %>
           <%= form.text_field :company_name, class: field_class(@contact_inquiry, :company_name) %>

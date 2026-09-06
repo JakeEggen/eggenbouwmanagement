@@ -4,6 +4,11 @@ class ContactController < ApplicationController
   end
 
   def create
+    if honeypot_filled?
+      redirect_to contact_path, notice: "Bedankt. Ik neem z.s.m. contact met u op."
+      return
+    end
+
     @contact_inquiry = ContactInquiry.new(contact_inquiry_params)
 
     if @contact_inquiry.save
@@ -15,6 +20,10 @@ class ContactController < ApplicationController
   end
 
   private
+
+  def honeypot_filled?
+    params.dig(:contact_inquiry, :website).present?
+  end
 
   def contact_inquiry_params
     params.require(:contact_inquiry).permit(

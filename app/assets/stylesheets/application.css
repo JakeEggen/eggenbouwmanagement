@@ -1372,6 +1372,14 @@ body.lot-lightbox-open {
   }
 }
 
+.contact-form__hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .contact-form__privacy {
   margin: 0 0 1rem;
   font-size: 0.95rem;

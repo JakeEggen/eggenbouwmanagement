@@ -1,4 +1,6 @@
 class ContactInquiry < ApplicationRecord
+  attr_accessor :website
+
   INTERESTS = {
     "kavel_a" => "Kavel A",
     "kavel_b" => "Kavel B",

@@ -39,6 +39,24 @@ class ContactControllerTest < ActionDispatch::IntegrationTest
     assert_includes email.subject, "Landbouwgrond"
   end
 
+  test "ignores bot submissions that fill the honeypot" do
+    assert_no_difference("ContactInquiry.count") do
+      assert_no_emails do
+        post contact_url, params: {
+          contact_inquiry: {
+            company_name: "Spam",
+            name: "Bot",
+            email: "bot@example.com",
+            interest: "overig",
+            website: "https://spam.example"
+          }
+        }
+      end
+    end
+
+    assert_redirected_to contact_path
+  end
+
   test "does not create inquiry when required fields are missing" do
     assert_no_difference("ContactInquiry.count") do
       assert_no_emails do
