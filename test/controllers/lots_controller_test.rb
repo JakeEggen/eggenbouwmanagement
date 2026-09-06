@@ -10,6 +10,18 @@ class LotsControllerTest < ActionDispatch::IntegrationTest
     assert_select "meta[property='og:image'][content*='main']"
   end
 
+  test "kavels index has original location and plan copy" do
+    get lots_url
+    assert_response :success
+    assert_select "h1", "Bouwkavels in Coevorden"
+    assert_select "h2", "Zelf bouwen"
+    assert_select "h2", "Extra grond"
+    assert_select "meta[property='og:title'][content='Bouwkavels Europaweg, Coevorden']"
+    assert_select ".lots-index__copy", /Klinkenvlier/
+    assert_select ".lots-index__copy a[href='https://zoek.officielebekendmakingen.nl/gmb-2024-193992.html']", /Europaweg 8/
+    assert_select "a[href=?]", contact_path(interesse: "landbouwgrond")
+  end
+
   test "old english lot urls redirect to dutch slugs" do
     get "/lots/kavel_b"
     assert_redirected_to "/kavels/bouwgrond-europaweg-b"

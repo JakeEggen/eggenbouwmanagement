@@ -1,6 +1,11 @@
 module ApplicationHelper
   SITE_NAME = "Eggen Bouw Management"
   SITE_DESCRIPTION = "Bouwmanagement, bouwbegeleiding en bouwadvies in Drenthe, Overijssel en Groningen. Eggen Bouw Management begeleidt nieuwbouw en verbouw van plan tot oplevering."
+  BESTEMMINGSPLAN_EUROPAWEG_URL = "https://zoek.officielebekendmakingen.nl/gmb-2024-193992.html"
+
+  def bestemmingsplan_europaweg_link(text = "bestemmingsplan Europaweg 8 te Coevorden")
+    link_to text, BESTEMMINGSPLAN_EUROPAWEG_URL, target: "_blank", rel: "noreferrer"
+  end
 
   def field_class(record, attribute, base: "form-control")
     [ base, ("is-invalid" if record.errors[attribute].any?) ].compact.join(" ")

@@ -1,19 +1,46 @@
-<% content_for :title, "Kavels" %>
-<% content_for :og_description, "Drie bouwkavels aan de Europaweg in Coevorden, onder de Ruimte-voor-ruimte-regeling. Bestemming Wonen, zelf bouwen naar eigen wens." %>
+<% content_for :title, "Bouwkavels Europaweg, Coevorden" %>
+<% content_for :og_description, "Drie bouwkavels aan de Europaweg in Coevorden. Bestemming Wonen, Ruimte voor ruimte. Zelf een vrijstaande woning bouwen, optioneel met extra landbouwgrond." %>
 <% content_for :og_image, "home_3_lots.webp" %>
 
 <section class="lots-index">
   <div class="container-md">
-    <h1 class="lots-index__title">Kavels</h1>
-    <p class="lots-index__intro">
-      Aan de Europaweg in Coevorden liggen drie bouwkavels onder de
-      Ruimte-voor-ruimte-regeling. Bestemming Wonen, zelf bouwen naar eigen wens.
-    </p>
+    <h1 class="lots-index__title">Bouwkavels in Coevorden</h1>
+
+    <div class="lots-index__copy">
+      <p>
+        Aan de rand van Coevorden, bij de wijk Klinkenvlier en de Klinkenvlierse plas,
+        liggen drie bouwkavels. Het terrein aan de Europaweg hoort bij Binnenvree Buitenvree Pikveld:
+        landelijk wonen, met de stad op korte afstand.
+      </p>
+
+      <h2>Zelf bouwen</h2>
+      <p>
+        De percelen worden uitgegeven onder de Ruimte-voor-ruimte-regeling. De bestemming is Wonen.
+        U ontwerpt zelf een vrijstaande woning, of laat die bouwen. De regels staan in het
+        vastgestelde <%= bestemmingsplan_europaweg_link %> (openbaar bij de gemeente).
+        Aanvaarding is in overleg.
+      </p>
+
+      <h2>Drie percelen</h2>
+      <p>
+        Kavel A is 8.188 m², kavel B 7.126 m² en kavel C 6.667 m². Elk perceel biedt ruimte
+        voor een woning met tuin en erf. Hieronder staan prijs, foto’s en de weg naar de
+        aparte kavelpagina.
+      </p>
+
+      <h2>Extra grond</h2>
+      <p>
+        Een of meer kavels kunnen worden vergroot met extra beschikbare grond (kavel O).
+        Het aangrenzende agrarische perceel is in overleg bij te nemen.
+        <%= link_to "Vraag naar de landbouwgrond", contact_path(interesse: "landbouwgrond") %>.
+      </p>
+    </div>
+
     <p class="lots-index__location">
       Locatie: Coevorden, Binnenvree Buitenvree Pikveld, Europaweg
     </p>
 
-    <%= image_tag "home_3_lots.webp", alt: "Bouwkavels Europaweg Coevorden", class: "lots-index__hero" %>
+    <%= image_tag "home_3_lots.webp", alt: "Drie bouwkavels aan de Europaweg in Coevorden, bij Klinkenvlier", class: "lots-index__hero" %>
 
     <div class="lots-index__grid">
       <% @lots.each do |lot| %>
