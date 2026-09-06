@@ -1,11 +1,13 @@
 <% content_for :title, "Bouwmanagement in Drenthe, Overijssel en Groningen" %>
 <% content_for :og_description, "Bouwmanagement, bouwbegeleiding en bouwadvies in Drenthe, Overijssel en Groningen. Eggen Bouw Management begeleidt nieuwbouw en verbouw van plan tot oplevering." %>
-<% content_for :og_image, "slide-1.jpg" %>
+<% content_for :og_image, "home_intro_2.png" %>
 
-<section class="home-block home-intro">
-  <div class="home-intro__media">
-    <%= image_tag "slide-1.jpg", alt: "Bouwbegeleiding op een bouwproject in Drenthe" %>
-  </div>
+<section
+  class="home-block home-intro"
+  style="--home-intro-image: url(<%= asset_path('home_intro_2.png') %>)"
+  aria-label="Bouwbegeleiding op een bouwproject in Drenthe"
+>
+  <div class="home-intro__media" aria-hidden="true"></div>
   <div class="home-intro__copy">
     <div class="home-intro__accent">
       <div class="home-intro__box">
