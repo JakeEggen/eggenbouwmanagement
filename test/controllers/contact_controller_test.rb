@@ -39,6 +39,7 @@ class ContactControllerTest < ActionDispatch::IntegrationTest
 
     email = ActionMailer::Base.deliveries.last
     assert_equal [ "jeggendutch@gmail.com" ], email.to
+    assert_equal [ "noreply@jeggen-dev.nl" ], email.from
     assert_includes email.subject, "Landbouwgrond"
   end
 
@@ -55,7 +56,9 @@ class ContactControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_equal [ "info@eggenbouwmanagement.nl" ], ActionMailer::Base.deliveries.last.to
+    email = ActionMailer::Base.deliveries.last
+    assert_equal [ "info@eggenbouwmanagement.nl" ], email.to
+    assert_equal [ "noreply@eggenbouwmanagement.nl" ], email.from
   end
 
   test "ignores bot submissions that fill the honeypot" do

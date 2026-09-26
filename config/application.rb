@@ -18,8 +18,10 @@ module EggenBouwManagement
 
     config.i18n.default_locale = :nl
 
+    # Staging and local default. ContactInquiryMailer switches the sender
+    # to noreply@eggenbouwmanagement.nl when the request host is the production site.
     config.action_mailer.default_options = {
-      from: "Eggen Bouw Management <noreply@jeggen-dev.nl>"
+      from: "Eggen Bouw Management <info@eggenbouwmanagement.nl>"
     }
 
     # Configuration for the application, engines, and railties goes here.
