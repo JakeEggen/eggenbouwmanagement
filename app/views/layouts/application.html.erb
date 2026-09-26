@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
   <head>
+    <meta charset="utf-8">
     <title><%= page_title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="<%= ApplicationHelper::SITE_NAME %>">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= yield :head %>
     <%= render "layouts/shared/social_meta" %>
+    <script type="application/ld+json"><%= raw json_escape(organization_json_ld.to_json) %></script>
 
     <link rel="icon" href="/favicon.ico" sizes="48x48">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
