@@ -1448,4 +1448,58 @@ body.lot-lightbox-open {
   }
 }
 
+.cookie-banner {
+  position: fixed;
+  z-index: 1080;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  max-width: 28rem;
+  margin-right: auto;
+  padding: 1.25rem 1.35rem;
+  background: #fff;
+  border: 1px solid color-mix(in srgb, var(--eggen-blue) 28%, white);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--eggen-dark) 16%, transparent);
+}
+
+.cookie-banner[hidden] {
+  display: none;
+}
+
+.cookie-banner__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--eggen-dark);
+}
+
+.cookie-banner__text {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--eggen-gray);
+}
+
+.cookie-banner__text a {
+  color: var(--eggen-blue);
+}
+
+.cookie-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cookie-settings-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--eggen-blue);
+  font: inherit;
+  line-height: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 
