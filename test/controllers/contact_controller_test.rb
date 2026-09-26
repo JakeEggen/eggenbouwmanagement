@@ -6,6 +6,7 @@ class ContactControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "h1", "Contact"
     assert_select "form"
+    assert_select "input#contact_inquiry_kvk_number"
     assert_select "a[href=?]", privacy_path
   end
 
@@ -20,6 +21,7 @@ class ContactControllerTest < ActionDispatch::IntegrationTest
         post contact_url, params: {
           contact_inquiry: {
             company_name: "Eggen",
+            kvk_number: "62925172",
             name: "Jake Eggen",
             email: "jake@example.com",
             interest: "landbouwgrond",
@@ -33,6 +35,7 @@ class ContactControllerTest < ActionDispatch::IntegrationTest
     inquiry = ContactInquiry.last
     assert_equal "landbouwgrond", inquiry.interest
     assert_equal "jake@example.com", inquiry.email
+    assert_equal "62925172", inquiry.kvk_number
 
     email = ActionMailer::Base.deliveries.last
     assert_equal [ "jeggendutch@gmail.com" ], email.to

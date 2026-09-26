@@ -27,7 +27,7 @@ class ContactController < ApplicationController
 
   def contact_inquiry_params
     params.require(:contact_inquiry).permit(
-      :company_name, :name, :address, :postal_code, :city, :phone, :email, :message, :interest
+      :company_name, :kvk_number, :name, :address, :postal_code, :city, :phone, :email, :message, :interest
     )
   end
 

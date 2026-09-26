@@ -52,27 +52,29 @@
 
 <section class="home-block home-lots">
   <div class="container-md">
-    <h2 class="home-lots__title">Kavels</h2>
-    <p class="home-lots__text">
-      Drie bouwkavels aan de Europaweg in Coevorden, landelijk gelegen en bestemd voor wonen.
-      U laat zelf een vrijstaande woning bouwen, binnen de kaders van bestemmingsplan Europaweg 8 (Ruimte voor ruimte).
-      De percelen zijn 8.188 m², 7.126 m² en 6.667 m².
-      Wie meer bouwgrond wil, kan een kavel vergroten met kavel O.
-      <%= link_to "Meer over de kavels", lots_path %>.
-    </p>
+    <h2 class="home-lots__title">Ruimte om jouw eigen thuis te bouwen</h2>
+    <div class="home-lots__copy">
+      <p>Aan de Europaweg in Coevorden liggen drie ruime bouwkavels op een mooie, landelijke plek. Hier heb je alle ruimte om jouw eigen vrijstaande woning te bouwen en er echt een plek van te maken die bij jou past.</p>
+      <p>De kavels zijn bestemd voor wonen. Je kunt zelf een woning ontwerpen of deze laten bouwen. Natuurlijk zijn er een aantal regels waar de woning aan moet voldoen. Deze staan in het bestemmingsplan Europaweg 8, binnen de Ruimte-voor-ruimte-regeling.</p>
+      <p>Er zijn drie kavels beschikbaar:</p>
+      <ul>
+        <li><%= link_to "Kavel A: 8.188 m²", lots_kavel_a_path %></li>
+        <li><%= link_to "Kavel B: 7.126 m²", lots_kavel_b_path %></li>
+        <li><%= link_to "Kavel C: 6.667 m²", lots_kavel_c_path %></li>
+      </ul>
+
+      <p>
+        Wil je nóg meer ruimte? Dan is het mogelijk om een kavel uit te breiden met extra bouwgrond, kavel O.
+        Benieuwd naar de mogelijkheden en de beschikbare kavels?
+        <%= link_to "Bekijk hier alle informatie over de kavels", lots_path %>.
+      </p>
+    </div>
     <p class="home-lots__location">
       Locatie: Coevorden, Binnenvree Buitenvree Pikveld, Europaweg
     </p>
 
-    <div class="home-lots__row">
-      <div class="home-lots__media">
-        <%= image_tag "home_3_lots.webp", alt: "Kavels Binnenvree Buitenvree Pikveld in Coevorden" %>
-      </div>
-      <div class="home-lots__actions">
-        <%= link_to "Kavel A", lots_kavel_a_path, class: "btn btn-primary btn-lg" %>
-        <%= link_to "Kavel B", lots_kavel_b_path, class: "btn btn-primary btn-lg" %>
-        <%= link_to "Kavel C", lots_kavel_c_path, class: "btn btn-primary btn-lg" %>
-      </div>
+    <div class="home-lots__media">
+      <%= image_tag "home_3_lots.webp", alt: "Kavels Binnenvree Buitenvree Pikveld in Coevorden" %>
     </div>
   </div>
 </section>

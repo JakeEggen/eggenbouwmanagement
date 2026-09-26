@@ -309,11 +309,10 @@
   display: flex;
   align-items: center;
   padding: 4.5rem 0;
-  text-align: center;
 }
 
 .home-lots__title {
-  margin: 0 0 0.75rem;
+  margin: 0 0 1.5rem;
   font-size: clamp(1.75rem, 2.4vw, 2.5rem);
   font-weight: 600;
   line-height: 1.15;
@@ -321,51 +320,44 @@
   color: var(--eggen-dark);
 }
 
-.home-lots__text {
-  margin: 2rem;
-  /* margin: 0 0 1.25rem; */
-  /* max-width: 42rem; */
+.home-lots__copy {
+  /* max-width: 46rem; */
+  margin: 0 auto;
+}
+
+.home-lots__copy p {
+  margin: 0 0 1.15rem;
   font-size: 1.05rem;
   line-height: 1.7;
   color: var(--eggen-gray);
-  text-align: center;
+}
+
+.home-lots__sizes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 0 0 1.5rem;
+}
+
+.home-lots__sizes .btn {
+  border-radius: 0.5rem;
+  font-weight: 600;
+  padding: 0.9rem 1rem;
 }
 
 .home-lots__location {
-  margin: 0 0 2rem;
+  max-width: 46rem;
+  margin: 2rem 0;
   font-size: 1.05rem;
   font-weight: 600;
   line-height: 1.5;
   color: var(--eggen-dark);
 }
 
-.home-lots__row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(11rem, 14rem);
-  gap: 1.25rem;
-  align-items: center;
-}
-
 .home-lots__media img {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-}
-
-.home-lots__actions {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.85rem;
-}
-
-.home-lots__actions .btn {
-  width: 100%;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  padding: 0.9rem 1.25rem;
 }
 
 @media (max-width: 767.98px) {
@@ -373,7 +365,7 @@
     padding: 2.5rem 0 3rem;
   }
 
-  .home-lots__row {
+  .home-lots__sizes {
     grid-template-columns: 1fr;
   }
 }
@@ -530,6 +522,11 @@ body {
 
 .site-footer__bar-link:hover {
   color: #fff;
+}
+
+.site-footer__disclaimer {
+  margin: 0.35rem 0 0;
+  line-height: 1.5;
 }
 
 @media (max-width: 767.98px) {
@@ -1223,10 +1220,12 @@ body.lot-lightbox-open {
   margin-top: 1.25rem;
 }
 
-.lots-index__location {
-  margin: 0 0 1.75rem;
-  font-weight: 600;
-  color: var(--eggen-dark);
+.lots-index__copy ul {
+  margin: 0 0 1rem;
+  padding-left: 1.2rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--eggen-gray);
 }
 
 .lots-index__hero {
