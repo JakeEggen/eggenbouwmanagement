@@ -14,7 +14,8 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_select ".project-gallery__item[data-category='woningbouw']", count: 8
     assert_select ".project-gallery__item[data-category='woningbouw'][data-src*='7_SAM_2328']", count: 1
     assert_select ".project-filters__btn", text: "Winkel"
-    assert_select ".project-filters__btn", text: "Onderhoud"
-    assert_select ".project-gallery__item[data-category='onderhoud'][data-src*='19_Wijert']", count: 1
+    assert_select ".project-filters__btn", text: "Onderhoud", count: 0
+    assert_select ".project-gallery__item[data-category='verzorging']", count: 4
+    assert_select ".project-gallery__item[data-category='verzorging'][data-src*='19_Wijert']", count: 1
   end
 end
