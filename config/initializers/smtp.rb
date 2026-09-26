@@ -2,8 +2,8 @@
 #
 # Resend:
 #   RESEND_API_KEY=re_xxxxxxxxx
-# From-address is set in config/application.rb.
-# The From-domain (jeggen-dev.nl) must be verified in Resend.
+# From-address depends on the request host. See ContactInquiryMailer.
+# Both From-domains (jeggen-dev.nl and eggenbouwmanagement.nl) must be verified in Resend.
 # Generic SMTP fallback:
 #   SMTP_ADDRESS, SMTP_PORT, SMTP_USERNAME, SMTP_PASSWORD
 
