@@ -32,7 +32,7 @@ class ContactController < ApplicationController
   end
 
   def deliver_notification
-    ContactInquiryMailer.notification(@contact_inquiry).deliver_now
+    ContactInquiryMailer.notification(@contact_inquiry, host: request.host).deliver_now
   rescue StandardError => e
     Rails.logger.error("Contact inquiry email failed (id=#{@contact_inquiry.id}): #{e.class}: #{e.message}")
   end
