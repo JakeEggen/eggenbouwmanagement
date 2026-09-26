@@ -1,11 +1,10 @@
 class ProjectsController < ApplicationController
   CATEGORY_IMAGES = {
-    "verzorging" => %w[1_0740-impressie-vogelvlucht 12_Maartenshof-150 13_SAM_2316],
+    "verzorging" => %w[1_0740-impressie-vogelvlucht 12_Maartenshof-150 13_SAM_2316 19_Wijert],
     "sport" => %w[2_IMG_2101 20_renkum],
     "school" => %w[3_SAM_2309 4_SAM_23141 5_SAM_2327 14_SAM_2310 15_SAM_2313],
     "woningbouw" => %w[6_SAM_2333 7_SAM_2328 8_SAM_2323 9_SAM_2320 10_P6300449 16_SAM_2306 17_SAM_2307 18_SAM_2302],
-    "winkel" => %w[11_Maartenshof-176],
-    "onderhoud" => %w[19_Wijert]
+    "winkel" => %w[11_Maartenshof-176]
   }.freeze
 
   CATEGORY_LABELS = {
@@ -13,8 +12,7 @@ class ProjectsController < ApplicationController
     "sport" => "Sport",
     "school" => "School",
     "woningbouw" => "Woningbouw",
-    "winkel" => "Winkel",
-    "onderhoud" => "Onderhoud"
+    "winkel" => "Winkel"
   }.freeze
 
   def index
