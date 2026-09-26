@@ -14,13 +14,17 @@ class ContactInquiryTest < ActiveSupport::TestCase
     assert ContactInquiry.new(valid_attrs).valid?
   end
 
-  test "requires company name, name, email and interest" do
+  test "requires name, email and interest" do
     inquiry = ContactInquiry.new
     assert_not inquiry.valid?
-    assert_includes inquiry.errors.attribute_names, :company_name
+    assert_not_includes inquiry.errors.attribute_names, :company_name
     assert_includes inquiry.errors.attribute_names, :name
     assert_includes inquiry.errors.attribute_names, :email
     assert_includes inquiry.errors.attribute_names, :interest
+  end
+
+  test "is valid without a company name" do
+    assert ContactInquiry.new(valid_attrs.merge(company_name: "")).valid?
   end
 
   test "rejects unknown interest" do

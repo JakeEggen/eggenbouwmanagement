@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_09_02_190000) do
+ActiveRecord::Schema[8.0].define(version: 2026_09_26_080000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "contact_inquiries", force: :cascade do |t|
-    t.string "company_name", null: false
+    t.string "company_name"
     t.string "name", null: false
     t.string "address"
     t.string "postal_code"

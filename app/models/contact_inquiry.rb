@@ -10,7 +10,7 @@ class ContactInquiry < ApplicationRecord
     "overig" => "Overig"
   }.freeze
 
-  validates :company_name, :name, :email, :interest, presence: true
+  validates :name, :email, :interest, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :interest, inclusion: { in: INTERESTS.keys }
 
