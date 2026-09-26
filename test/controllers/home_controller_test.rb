@@ -13,9 +13,9 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_select "figcaption", "RCF Renkum"
     assert_select "h2", "Ruimte om jouw eigen thuis te bouwen"
     assert_select ".home-lots__copy", /Europaweg/
-    assert_select ".home-lots__sizes a[href=?]", lots_kavel_a_path, text: "8.188 m²"
-    assert_select ".home-lots__sizes a[href=?]", lots_kavel_b_path, text: "7.126 m²"
-    assert_select ".home-lots__sizes a[href=?]", lots_kavel_c_path, text: "6.667 m²"
+    assert_select ".home-lots__sizes a[href=?]", lots_kavel_a_path, text: "Kavel A: 8.188 m²"
+    assert_select ".home-lots__sizes a[href=?]", lots_kavel_b_path, text: "Kavel B: 7.126 m²"
+    assert_select ".home-lots__sizes a[href=?]", lots_kavel_c_path, text: "Kavel C: 6.667 m²"
     assert_select ".home-lots a[href=?]", lots_path
     assert_select ".home-lots__actions", count: 0
     assert_select "h2", "Landbouwgrond"
