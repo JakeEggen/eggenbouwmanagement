@@ -27,12 +27,12 @@ class ContactController < ApplicationController
 
   def contact_inquiry_params
     params.require(:contact_inquiry).permit(
-      :company_name, :name, :address, :postal_code, :city, :phone, :email, :message, :interest
+      :company_name, :kvk_number, :name, :address, :postal_code, :city, :phone, :email, :message, :interest
     )
   end
 
   def deliver_notification
-    ContactInquiryMailer.notification(@contact_inquiry).deliver_now
+    ContactInquiryMailer.notification(@contact_inquiry, host: request.host).deliver_now
   rescue StandardError => e
     Rails.logger.error("Contact inquiry email failed (id=#{@contact_inquiry.id}): #{e.class}: #{e.message}")
   end

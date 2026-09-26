@@ -38,6 +38,11 @@
         </div>
 
         <div class="contact-form__field">
+          <%= form.label :kvk_number, "KvK-nummer" %>
+          <%= form.text_field :kvk_number, class: "form-control", inputmode: "numeric", autocomplete: "off" %>
+        </div>
+
+        <div class="contact-form__field">
           <%= form.label :name, "Naam *" %>
           <%= form.text_field :name, class: field_class(@contact_inquiry, :name) %>
         </div>

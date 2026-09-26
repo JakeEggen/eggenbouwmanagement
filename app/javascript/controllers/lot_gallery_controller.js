@@ -22,16 +22,22 @@ export default class extends Controller {
   }
 
   show(event) {
-    this.select(this.thumbTargets.indexOf(event.currentTarget))
+    const index = this.activeThumbs.indexOf(event.currentTarget)
+    if (index < 0) return
+    this.select(index)
   }
 
   openAt(event) {
-    this.select(this.thumbTargets.indexOf(event.currentTarget))
+    const index = this.activeThumbs.indexOf(event.currentTarget)
+    if (index < 0) return
+    this.select(index)
     this.open()
   }
 
   selectFromLightbox(event) {
-    this.select(this.lightboxThumbTargets.indexOf(event.currentTarget))
+    const source = this.thumbTargets[this.lightboxThumbTargets.indexOf(event.currentTarget)]
+    if (!source || source.hidden) return
+    this.select(this.activeThumbs.indexOf(source))
   }
 
   open() {
@@ -192,6 +198,7 @@ export default class extends Controller {
 
     this.index = (index + slides.length) % slides.length
     const slide = slides[this.index]
+    const activeThumb = this.activeThumbs[this.index]
 
     if (this.hasMainTarget) {
       this.mainTarget.src = slide.src
@@ -203,13 +210,16 @@ export default class extends Controller {
     this.counterTarget.textContent = label
     if (this.hasHintTarget) this.hintTarget.textContent = label
 
-    this.thumbTargets.forEach((thumb, i) => {
+    this.thumbTargets.forEach((thumb) => {
       if (thumb.classList.contains("lot-gallery__thumb")) {
-        thumb.classList.toggle("is-active", i === this.index)
+        thumb.classList.toggle("is-active", thumb === activeThumb)
       }
     })
     this.lightboxThumbTargets.forEach((thumb, i) => {
-      thumb.classList.toggle("is-active", i === this.index)
+      const source = this.thumbTargets[i]
+      const included = !source?.hidden
+      thumb.hidden = !included
+      thumb.classList.toggle("is-active", included && source === activeThumb)
     })
 
     this.ensureThumbWindow()
@@ -250,8 +260,12 @@ export default class extends Controller {
     if (!this.zoomed) img.classList.remove("is-dragging")
   }
 
+  get activeThumbs() {
+    return this.thumbTargets.filter((thumb) => !thumb.hidden)
+  }
+
   get slides() {
-    return this.thumbTargets.map((thumb) => ({
+    return this.activeThumbs.map((thumb) => ({
       src: thumb.dataset.src,
       alt: thumb.dataset.alt
     }))
