@@ -23,8 +23,11 @@ module ApplicationHelper
   end
 
   def page_title
-    title = content_for(:title)
-    title.present? ? "#{title.strip} · #{SITE_NAME}" : SITE_NAME
+    title = content_for(:title).to_s.strip
+    return SITE_NAME if title.blank?
+    return title if title.include?(SITE_NAME)
+
+    "#{title} · #{SITE_NAME}"
   end
 
   def og_title

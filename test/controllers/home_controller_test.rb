@@ -6,10 +6,10 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "html[lang=nl]"
     assert_select "meta[charset=utf-8]"
-    assert_select "title", "Eggen Bouw Management · Bouwmanagement in Drenthe, Overijssel en Groningen"
+    assert_select "title", "Eggen Bouw Management in Drenthe, Overijssel en Groningen"
     assert_select "meta[name=description][content*=Groningen]"
     assert_select "link[rel=canonical][href=?]", "http://www.example.com/"
-    assert_select "meta[property='og:title'][content='Bouwmanagement in Drenthe, Overijssel en Groningen']"
+    assert_select "meta[property='og:title'][content='Eggen Bouw Management in Drenthe, Overijssel en Groningen']"
     assert_select "meta[property='og:image'][content*='home_intro_2']"
     assert_select "meta[property='og:image:alt'][content=?]", "Bouwbegeleiding op een bouwproject in Drenthe"
     assert_select "meta[property='og:description'][content*=Groningen]"
