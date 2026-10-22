@@ -109,6 +109,18 @@ class ContactControllerTest < ActionDispatch::IntegrationTest
     assert_select ".contact-form__errors", /niet worden verzonden/
   end
 
+  test "reports a failed delivery with the inquiry to the error reporter" do
+    report = assert_error_reported(Net::SMTPFatalError) do
+      with_flaky_delivery(error: Net::SMTPFatalError.new("550 domain not verified"), failures: Float::INFINITY) do
+        post contact_url, params: VALID_PARAMS
+      end
+    end
+
+    assert report.handled?
+    assert_equal "jake@example.com", report.context[:inquiry]["email"]
+    assert_equal "Hallo", report.context[:inquiry]["message"]
+  end
+
   test "emails the production address when submitted on the production site" do
     host! "www.eggenbouwmanagement.nl"
 

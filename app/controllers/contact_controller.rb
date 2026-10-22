@@ -71,11 +71,17 @@ class ContactController < ApplicationController
     end
   end
 
-  # Last-resort record of the inquiry so it can be recovered from the logs.
+  # Last-resort record of the inquiry so it can be recovered from Sentry or the logs.
   def log_failed_delivery(error)
     Rails.logger.error(
       "Contact inquiry email failed: #{error.class}: #{error.message} " \
       "inquiry=#{@contact_inquiry.attributes.to_json}"
+    )
+    Rails.error.report(
+      error,
+      handled: true,
+      severity: :error,
+      context: { inquiry: @contact_inquiry.attributes, host: request.host, tags: { feature: "contact_form" } }
     )
   end
 end
