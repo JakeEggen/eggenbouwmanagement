@@ -15,7 +15,8 @@ elsif ENV["RESEND_API_KEY"].present?
   Rails.application.config.action_mailer.raise_delivery_errors = true
   Rails.application.config.action_mailer.smtp_settings = {
     address: "smtp.resend.com",
-    port: 465,
+    # Render free services block outbound 25/465/587; Resend also offers implicit TLS on 2465.
+    port: 2465,
     user_name: "resend",
     password: ENV["RESEND_API_KEY"],
     tls: true
