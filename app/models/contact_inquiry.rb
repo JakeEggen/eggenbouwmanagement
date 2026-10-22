@@ -1,4 +1,18 @@
-class ContactInquiry < ApplicationRecord
+class ContactInquiry
+  include ActiveModel::Model
+  include ActiveModel::Attributes
+
+  attribute :company_name, :string
+  attribute :kvk_number, :string
+  attribute :name, :string
+  attribute :address, :string
+  attribute :postal_code, :string
+  attribute :city, :string
+  attribute :phone, :string
+  attribute :email, :string
+  attribute :message, :string
+  attribute :interest, :string
+
   attr_accessor :website
 
   INTERESTS = {
