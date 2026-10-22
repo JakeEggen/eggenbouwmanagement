@@ -5,8 +5,12 @@
 # From-address depends on the request host. See ContactInquiryMailer.
 # Generic SMTP fallback:
 #   SMTP_ADDRESS, SMTP_PORT, SMTP_USERNAME, SMTP_PASSWORD
+#
+# Never in the test environment: tests must use the :test delivery method.
 
-if ENV["RESEND_API_KEY"].present?
+if Rails.env.test?
+  # Keep config/environments/test.rb in charge.
+elsif ENV["RESEND_API_KEY"].present?
   Rails.application.config.action_mailer.delivery_method = :smtp
   Rails.application.config.action_mailer.raise_delivery_errors = true
   Rails.application.config.action_mailer.smtp_settings = {
