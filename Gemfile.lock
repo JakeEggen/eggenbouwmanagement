@@ -294,6 +294,13 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
+    sentry-rails (7.1.0)
+      railties (>= 5.2.0)
+      sentry-ruby (~> 7.1.0)
+    sentry-ruby (7.1.0)
+      bigdecimal
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      logger
     sshkit (1.25.1)
       base64
       logger
@@ -359,6 +366,8 @@ DEPENDENCIES
   rails (~> 8.0.0)
   rubocop-rails-omakase
   selenium-webdriver
+  sentry-rails (~> 7.1)
+  sentry-ruby (~> 7.1)
   stimulus-rails
   thruster
   turbo-rails
