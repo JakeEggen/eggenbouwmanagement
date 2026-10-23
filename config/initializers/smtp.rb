@@ -5,13 +5,18 @@
 # From-address depends on the request host. See ContactInquiryMailer.
 # Generic SMTP fallback:
 #   SMTP_ADDRESS, SMTP_PORT, SMTP_USERNAME, SMTP_PASSWORD
+#
+# Never in the test environment: tests must use the :test delivery method.
 
-if ENV["RESEND_API_KEY"].present?
+if Rails.env.test?
+  # Keep config/environments/test.rb in charge.
+elsif ENV["RESEND_API_KEY"].present?
   Rails.application.config.action_mailer.delivery_method = :smtp
   Rails.application.config.action_mailer.raise_delivery_errors = true
   Rails.application.config.action_mailer.smtp_settings = {
     address: "smtp.resend.com",
-    port: 465,
+    # Render free services block outbound 25/465/587; Resend also offers implicit TLS on 2465.
+    port: 2465,
     user_name: "resend",
     password: ENV["RESEND_API_KEY"],
     tls: true

@@ -84,7 +84,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.25.0)
       msgpack (~> 1.5)
-    brakeman (8.0.6)
+    brakeman (8.1.0)
       racc
     builder (3.3.0)
     capybara (3.40.0)
@@ -192,13 +192,6 @@ GEM
     parser (3.3.12.0)
       ast (~> 2.4.1)
       racc
-    pg (1.6.3)
-    pg (1.6.3-aarch64-linux)
-    pg (1.6.3-aarch64-linux-musl)
-    pg (1.6.3-arm64-darwin)
-    pg (1.6.3-x86_64-darwin)
-    pg (1.6.3-x86_64-linux)
-    pg (1.6.3-x86_64-linux-musl)
     pp (0.6.4)
       prettyprint
     prettyprint (0.2.0)
@@ -301,6 +294,13 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
+    sentry-rails (7.1.0)
+      railties (>= 5.2.0)
+      sentry-ruby (~> 7.1.0)
+    sentry-ruby (7.1.0)
+      bigdecimal
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      logger
     sshkit (1.25.1)
       base64
       logger
@@ -361,12 +361,13 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
-  pg (~> 1.1)
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.0)
   rubocop-rails-omakase
   selenium-webdriver
+  sentry-rails (~> 7.1)
+  sentry-ruby (~> 7.1)
   stimulus-rails
   thruster
   turbo-rails
