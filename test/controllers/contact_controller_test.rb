@@ -25,6 +25,8 @@ class ContactControllerTest < ActionDispatch::IntegrationTest
     }
   }.freeze
 
+  setup { ContactController::RATE_LIMIT_STORE.clear }
+
   def with_flaky_delivery(error:, failures:)
     FlakyDelivery.error = error
     FlakyDelivery.failures = failures
@@ -153,6 +155,28 @@ class ContactControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to contact_path
+  end
+
+  test "refuses a sixth submission within ten minutes and keeps the input" do
+    5.times { post contact_url, params: VALID_PARAMS }
+
+    assert_no_emails do
+      post contact_url, params: VALID_PARAMS
+    end
+
+    assert_response :too_many_requests
+    assert_select ".contact-form__errors", /te vaak verstuurd/
+    assert_select "input#contact_inquiry_name[value=?]", "Jake Eggen"
+  end
+
+  test "accepts submissions again after ten minutes" do
+    5.times { post contact_url, params: VALID_PARAMS }
+
+    travel 10.minutes + 1.second do
+      assert_emails 1 do
+        post contact_url, params: VALID_PARAMS
+      end
+    end
   end
 
   test "does not send when required fields are missing" do

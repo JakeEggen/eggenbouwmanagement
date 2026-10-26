@@ -14,6 +14,9 @@ Sentry.init do |config|
   # Failed contact emails attach the inquiry explicitly (ContactController).
   config.send_default_pii = false
 
+  # Malformed multipart bodies, sent by bots; Rack rejects them before the app runs.
+  config.excluded_exceptions += [ "Rack::Multipart::BoundaryTooLongError" ]
+
   # Pick up Rails.error.report calls, not just unhandled exceptions.
   config.rails.register_error_subscriber = true
 

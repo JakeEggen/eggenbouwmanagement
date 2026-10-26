@@ -17,6 +17,14 @@
 
     <div class="contact-page__layout">
       <%= form_with model: @contact_inquiry, url: contact_path, method: :post, class: "contact-form" do |form| %>
+        <% if @rate_limited %>
+          <div class="contact-form__errors" role="alert">
+            <p>U heeft het formulier te vaak verstuurd.</p>
+            Probeer het over tien minuten opnieuw, of neem direct contact op via
+            <%= mail_to "info@eggenbouwmanagement.nl" %> of <%= link_to "06-27263145", "tel:+31627263145" %>.
+          </div>
+        <% end %>
+
         <% if @delivery_failed %>
           <div class="contact-form__errors" role="alert">
             <p>Uw bericht kon door een technische storing niet worden verzonden.</p>

@@ -14,6 +14,12 @@ class ContactController < ApplicationController
   # Seconds to wait before retry n is `delivery_retry_delay * n`.
   class_attribute :delivery_retry_delay, default: 1
 
+  # Its own store: the test environment's cache is a null store, which never counts.
+  # In-process, so counts reset on deploy; enough to stop a bot flooding the inbox.
+  RATE_LIMIT_STORE = ActiveSupport::Cache::MemoryStore.new
+
+  rate_limit to: 5, within: 10.minutes, only: :create, store: RATE_LIMIT_STORE, with: -> { render_rate_limited }
+
   def contact
     @contact_inquiry = ContactInquiry.new(interest: params[:interesse])
   end
@@ -40,6 +46,12 @@ class ContactController < ApplicationController
   end
 
   private
+
+  def render_rate_limited
+    @contact_inquiry = ContactInquiry.new(contact_inquiry_params)
+    @rate_limited = true
+    render :contact, status: :too_many_requests
+  end
 
   def honeypot_filled?
     params.dig(:contact_inquiry, :website).present?
