@@ -35,7 +35,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 # Error reporting [https://docs.sentry.io/platforms/ruby/guides/rails/]
-gem "sentry-ruby", "~> 7.1"
+gem "sentry-ruby", "~> 7.2"
 gem "sentry-rails", "~> 7.1"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
